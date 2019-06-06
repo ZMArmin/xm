@@ -14,13 +14,13 @@
 
 <script>
     import routes from '@/router/routes'
-export default {
-    data () {
-        return {
-            tabbars: routes.filter(route => route.meta.isTabbar)
+    export default {
+        data () {
+            return {
+                tabbars: routes.filter(route => route.meta.isTabbar)
+            }
         }
     }
-}
 </script>
 
 <style lang="scss" scoped>
