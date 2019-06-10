@@ -4,6 +4,8 @@ const Sort = () => import('@/views/Sort')
 const Taste = () => import('@/views/Taste')
 const Cart = () => import('@/views/Cart')
 const Mine = () => import('@/views/Mine')
+const ShopList = () => import('@/views/ShopList')
+const ProductList = () => import('@/views/ProductList')
 
 export default [
   {
@@ -25,7 +27,14 @@ export default [
       isTabbar: true,
       title: '分类',
       icon: '&#xe6b7;'
-    }
+    },
+    children: [
+      {
+        path: ':shopId',
+        name: 'shoplist',
+        component: ShopList
+      }
+    ]
   },
   {
     path: '/taste',
@@ -56,5 +65,11 @@ export default [
       title: '我的',
       icon: '&#xe680;'
     }
+  },
+  {
+    path: '/productlist',
+    name: 'productlist',
+    component: ProductList,
+    meta: {}
   }
 ]

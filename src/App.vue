@@ -13,10 +13,10 @@
 
 <script>
     import XmFooter from '@/components/XmFooter'
-    import { Toast } from 'mint-ui'
+    // import { Toast } from 'mint-ui'
     export default {
         created () {
-            Toast('提示信息')
+            // Toast('提示信息')
         },
         components: {
             XmFooter
@@ -97,6 +97,7 @@ body {
 
     &-main {
         flex: 1;
+        overflow: auto;
     }
 }
 </style>
