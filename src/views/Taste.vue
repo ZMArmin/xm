@@ -1,13 +1,14 @@
 <template>
-    <div>
-        品味
-    </div>
+    <XmTaste></XmTaste>
 </template>
 
 <script>
-export default {
-
-}
+    import XmTaste from '@/components/XmTaste'
+    export default {
+        components: {
+            XmTaste
+        }
+    }
 </script>
 
 <style>

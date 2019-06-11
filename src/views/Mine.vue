@@ -1,13 +1,14 @@
 <template>
-    <div>
-        我的
-    </div>
+    <XmMine></XmMine>
 </template>
 
 <script>
-export default {
-
-}
+    import XmMine from '@/components//XmMine'
+    export default {
+        components: {
+            XmMine
+        }
+    }
 </script>
 
 <style>
