@@ -1,3 +1,4 @@
+import XmFooter from '@/components/XmFooter'
 // 配置路由为异步路由
 const Home = () => import('@/views/Home')
 const Sort = () => import('@/views/Sort')
@@ -8,13 +9,17 @@ const ShopList = () => import('@/views/ShopList')
 const Product = () => import('@/views/Product')
 const ProductList = () => import('@/views/ProductList')
 const Detail = () => import('@/views/Detail')
+const Login = () => import('@/views/Login')
 
 export default [
   {
     path: '/home',
     alias: '/',
     name: 'home',
-    component: Home,
+    components: {
+      default: Home,
+      footer: XmFooter
+    },
     meta: {
       isTabbar: true,
       title: '首页',
@@ -24,7 +29,10 @@ export default [
   {
     path: '/sort',
     name: 'sort',
-    component: Sort,
+    components: {
+      default: Sort,
+      footer: XmFooter
+    },
     meta: {
       isTabbar: true,
       title: '分类',
@@ -41,7 +49,10 @@ export default [
   {
     path: '/taste',
     name: 'taste',
-    component: Taste,
+    components: {
+      default: Taste,
+      footer: XmFooter
+    },
     meta: {
       isTabbar: true,
       title: '品味',
@@ -51,7 +62,10 @@ export default [
   {
     path: '/cart',
     name: 'cart',
-    component: Cart,
+    components: {
+      default: Cart,
+      footer: XmFooter
+    },
     meta: {
       isTabbar: true,
       title: '购物车',
@@ -61,7 +75,10 @@ export default [
   {
     path: '/mine',
     name: 'mine',
-    component: Mine,
+    components: {
+      default: Mine,
+      footer: XmFooter
+    },
     meta: {
       isTabbar: true,
       title: '我的',
@@ -90,5 +107,13 @@ export default [
     meta: {
         isTabbar: false
     }
-  }
+  },
+    {
+      path: '/login',
+      name: '/login',
+      component: Login,
+      meta: {
+        isTabbar: false
+      }
+    }
 ]

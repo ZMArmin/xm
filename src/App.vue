@@ -6,20 +6,16 @@
             <router-view></router-view>
         </div>
         <div class="xm-app-footer">
-            <XmFooter></XmFooter>
+            <router-view name="footer"></router-view>
         </div>
     </div>
 </template>
 
 <script>
-    import XmFooter from '@/components/XmFooter'
-    // import { Toast } from 'mint-ui'
+    import { Toast } from 'mint-ui'
     export default {
         created () {
-            // Toast('提示信息')
-        },
-        components: {
-            XmFooter
+            Toast('提示信息')
         }
     }
 </script>
@@ -97,7 +93,8 @@ body {
 
     &-main {
         flex: 1;
-        overflow: auto;
+        overflow-x: hidden;
     }
+
 }
 </style>
