@@ -5,7 +5,9 @@ const Taste = () => import('@/views/Taste')
 const Cart = () => import('@/views/Cart')
 const Mine = () => import('@/views/Mine')
 const ShopList = () => import('@/views/ShopList')
+const Product = () => import('@/views/Product')
 const ProductList = () => import('@/views/ProductList')
+const Detail = () => import('@/views/Detail')
 
 export default [
   {
@@ -67,9 +69,26 @@ export default [
     }
   },
   {
-    path: '/productlist',
-    name: 'productlist',
-    component: ProductList,
-    meta: {}
+    path: '/product',
+    name: 'product',
+    component: Product,
+    meta: {
+      isTabbar: false
+    },
+    children: [
+        {
+          path: ':productId',
+          name: 'productList',
+          component: ProductList
+        }
+    ]
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    component: Detail,
+    meta: {
+        isTabbar: false
+    }
   }
 ]

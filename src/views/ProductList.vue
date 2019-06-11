@@ -1,80 +1,109 @@
 <template>
-    <div class="xm-productList">
-        <div class="xm-productList-header">
-            <span>></span>
-            <h3>有品推荐</h3>
-            <i class="icon" v-html="'&#xe61e;'"></i>
-        </div>
-        <div class="xm-productList-main">
-            <ul class="xm-productList-main-nav">
-                <li>男装</li>
-                <li>女装</li>
-            </ul>
-            <div class="xm-productList-main-shop">
-                <div>
-                    <img src="https://img.alicdn.com/bao/uploaded/i3/3177203649/O1CN01Svren01cpHk99VqHs_!!0-item_pic.jpg" alt="">
-                </div>
-                <p>sdfsdfsfsfsdfsd</p>
-                <p>sdfsd</p>
-                <p>￥<span>9.9</span></p>
-            </div>
+    <div
+        class="xm-productList"
+        v-infinite-scroll="onLoadMore"
+        infinite-scroll-distance="10"
+    >
+        <ProductItem
+            v-for="list in lists"
+            :key="list.id"
+            :id="list.id"
+            :image="list.image"
+            :title="list.title"
+            :price="list.price"
+            :couponValue="list.couponValue"
+        ></ProductItem>
+        <b
+            class="xm-productList-loadmore"
+            v-if="!isEnd"
+            @click="onLoadMore"
+        >加载更多...</b>
+        <div class="xm-productList-nomore" v-else>
+            <p>——底线在此，不能更低了——</p>
         </div>
     </div>
 </template>
 
 <script>
+    import * as ajax from '@/request'
+    import ProductItem from '@/components/ProductItem'
     export default {
+        data () {
+            return {
+                id: '',
+                isEnd: false,
+                lists: [],
+                nextIndex: 0
+            }
+        },
+        // created () {
+        //     // console.log(this.$route.params)
+        //     this.id = this.$route.params.shopId
+        //     ajax.getShopList(this.id).then(resp => {
+        //         // console.log(resp)
+        //         this.lists = resp.data.items.list
+        //     })
+        // },
 
+        // 导航守卫
+        beforeRouteEnter (to, from, next) {
+            // this.id = to.params.productId
+            next(vm => {
+                vm.id = to.params.productId
+                // vm.getList()
+            })
+        },
+
+        beforeRouteUpdate (to, from, next) {
+            this.id = to.params.productId
+            this.nextIndex = 0
+            this.lists = []
+            // this.getList()
+            next()
+        },
+        methods: {
+            getList () {
+                ajax.getShopList(this.id, this.nextIndex).then(resp => {
+                    // console.log(resp)
+                    // this.lists = resp.data.items.list
+                    this.lists = this.lists.concat(resp.data.items.list)
+                    this.nextIndex = resp.data.items.nextIndex
+                    this.isEnd = resp.data.items.isEnd
+                })
+            },
+            onLoadMore () {
+                this.getList()
+            }
+        },
+        components: {
+            ProductItem
+        }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $grey: #eee;
 $deepGrey: #383838;
 $mainColor: #845f3f;
-@font-face {
-    font-family: 'iconfont';  /* project id 1231674 */
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot');
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.svg#iconfont') format('svg');
-}
-.icon {
-    font-family: 'iconfont';
-}
-.xm-productList {
+.xm-productList-loadmore {
+    display: inline-block;
     width: 100%;
-    &-header {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    // background-color: $mainColor;
+    // border-radius: 5px;
+    // margin: 0 auto;
+    color: $mainColor;
+}
+.xm-productList-nomore {
         width: 100%;
-        height: 50px;
-        line-height: 50px;
-        position: relative;
-        span {
-            display: block;
-            float: left;
-            font-size: 20px;
-            color: #919191;
-            margin-left: 10px;
-        }
-        h3 {
-            width: 100px;
-            font-size: 16px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        i{
-            float: right;
-            font-size: 20px;
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            margin-top: -25px;
-        }
-    }
-    &-main {
-
-    }
+        height: 150px;
+        line-height: 150px;
+        text-align: center;
+        font-size: 14px;
+        color: #ababab;
+        margin-top: 20px;
+        background-color: $grey;
 }
 </style>
