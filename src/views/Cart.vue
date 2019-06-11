@@ -25,9 +25,12 @@
 
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
     export default {
 
 =======
+=======
+>>>>>>> 18f0789d8019a6a5a853d25e2e8e6deac33af43e
     import XmCartMore from '@/components/XmCartMore'
     import XmCartEmpty from '@/components/XmCartEmpty'
     import XmCartSome from '@/components/XmCartSome'
@@ -49,7 +52,10 @@
                'totalCheckedPrice'
            ]) 
         }
+<<<<<<< HEAD
 >>>>>>> feat:购物车静态页面，购物车操作加减，选择
+=======
+>>>>>>> 18f0789d8019a6a5a853d25e2e8e6deac33af43e
     }
 </script>
 
