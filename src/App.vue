@@ -97,6 +97,8 @@ body {
 
     &-main {
         flex: 1;
+        overflow-x: hidden;
     }
+
 }
 </style>
