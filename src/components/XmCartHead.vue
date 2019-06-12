@@ -49,7 +49,7 @@
 <style lang="scss">
     .xm-cart-head {
         width: 100%;
-        height: 45px;
+        height: 8%;
         position: fixed;
         top: 0;
         opacity: 0;

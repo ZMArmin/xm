@@ -125,16 +125,19 @@ export default [
         isTabbar: false,
         isAuthRequired: false
       }
-    }
-  },
+    },
   {
     path: '/search',
     name: 'search',
-    component: XmSearch
+    component: XmSearch,
+    meta: {
+    }
   },
   {
     path: '/message',
     name: 'message',
-    component: XmMessage
+    component: XmMessage,
+    meta: {
+    }
   }
 ]

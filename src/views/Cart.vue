@@ -73,8 +73,6 @@
             ...mapGetters([
                 'totalCount',
                 'totalCheckedCount',
-<<<<<<< HEAD
-<<<<<<< HEAD
                 'totalCheckedPrice',
                 'isAllCheck'
             ])
@@ -91,14 +89,6 @@
                     this.list = resp.data.list
                 })
             }
-=======
-                'totalCheckedPrice'
-            ])
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
-                'totalCheckedPrice'
-            ])
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         }
     }
 </script>
@@ -186,8 +176,6 @@
                 }
             }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                 .xm-cart-total-cal,
                 .xm-cart-total-del {
                     width: 96px;
@@ -203,7 +191,6 @@
                     border-radius: 20px;
                 }
             }
-=======
             .xm-cart-total-counter {
                 flex: 1;
                 font-size: 13px;
@@ -219,7 +206,6 @@
                     color: #e30d0d;
                 }
             }
-=======
             .xm-cart-total-counter {
                 flex: 1;
                 font-size: 13px;
@@ -235,7 +221,6 @@
                     color: #e30d0d;
                 }
             }
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
 
             .xm-cart-total-cal {
                 width: 96px;
@@ -249,10 +234,6 @@
                 font-weight: 600;
                 border-radius: 20px;
             }
-        }
-<<<<<<< HEAD
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
+        
     }
 </style>

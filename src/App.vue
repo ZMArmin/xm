@@ -12,14 +12,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    // import { Toast } from 'mint-ui'
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
-    // import { Toast } from 'mint-ui'
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
     export default {
         created () {
         }

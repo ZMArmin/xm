@@ -65,8 +65,3 @@ export const getMarket = () => {
 export const getList = () => {
     return ajax.get('http://quan.lukou.com/api/tab/2?start=0')
 }
-
-export const getTasteList = () => {
-    return ajax.get('http://quan.lukou.com/api/column/4203/items?start=0')
-}
-

@@ -39,25 +39,15 @@
 <script>
     import XmCartItem from '@/components/XmCartItem'
     import {
-<<<<<<< HEAD
-<<<<<<< HEAD
         mapState,
         mapMutations,
         mapGetters
-=======
-        mapState
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
-        mapState
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
     } from 'vuex'
     export default {
         components: {
             XmCartItem
         },
         computed: {
-<<<<<<< HEAD
-<<<<<<< HEAD
             ...mapState([
                 'cart',
                 'allCheck',
@@ -67,24 +57,11 @@
                 'isAllCheck'
             ])
         },
-        created () {
-        },
         methods: {
             ...mapMutations([
                 'toggleAllIscheck',
                 'toggleIsEdit'
             ])
-=======
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
-            ...mapState(['cart'])
-        },
-        created () {
-            console.log(this.cart)
-<<<<<<< HEAD
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         }
     }
 </script>
@@ -92,40 +69,6 @@
 <style lang="scss">
     .xm-cart-main {
         width: 100%;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
-        height: 50px;
-        position: fixed;
-        top: 0;
-        line-height: 50px;
-        z-index: 2;
-
-        &-title {
-            width: 100%;
-            color: #333;
-            font-size: 16px;
-            text-align: center;
-            background: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        &-edit {
-            position: absolute;
-            color: #333;
-            right: 20px;
-            top:0;
-        }
-    }
-
-    .xm-cart-main {
-        width: 100%;
-<<<<<<< HEAD
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         position: relative;
         background: #f3f3f3;
         z-index: -1;
@@ -134,36 +77,9 @@
             height: 105px;
 
             img {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 width: 100%;
                 height: 100%;
             }
-        }
-            .xm-cart-title {
-=======
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
-                width: 100%;
-                height: 100%;
-            }
-
-<<<<<<< HEAD
-        }
-        .xm-cart-title {
-            width: 100%;
-            position: absolute;
-            font-size: 16px;
-            top: 28px;
-            text-align: center;
-            color: #fff;
-        }
-<<<<<<< HEAD
-=======
-    }
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
         }
         .xm-cart-title {
             width: 100%;
@@ -174,77 +90,69 @@
             color: #fff;
         }
     }
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
-        .xm-cart-edit {
-            position: absolute;
+    .xm-cart-edit {
+        position: absolute;
+        z-index: 1;
+        top:28px;
+        right: 8px;
+        color: #fff;
+        font-size: 14px;
+    }
+    .xm-cart-item {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        margin-top:-50px;
+        flex-direction: column;
+        .xm-cart-item-title {
             z-index: 1;
-            top:28px;
-            right: 8px;
-            color: #fff;
-            font-size: 14px;
-        }
-<<<<<<< HEAD
-<<<<<<< HEAD
+            margin:0 10px;
+            background: #fff;
+            padding-left: 12px;
+            padding-top: 3px;
+            height: 42px;
+            position: relative;
+            border-radius: 5px;
 
-=======
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
-        .xm-cart-item {
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            margin-top:-50px;
-            flex-direction: column;
-            .xm-cart-item-title {
-                z-index: 1;
-                margin:0 10px;
-                background: #fff;
-                padding-left: 12px;
-                padding-top: 3px;
-                height: 42px;
+            input {
+                display: none;
                 position: relative;
-                border-radius: 5px;
 
-                input {
-                    display: none;
-                    position: relative;
-
-                    &:checked {
-                        + .check {
-                            width: 18px;
-                            height: 18px;
-                            background: url(https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_icon_checkbox_check.png) no-repeat center center;
-                            background-size: 100%;
-                            border:none;
-                        }
+                &:checked {
+                    + .check {
+                        width: 18px;
+                        height: 18px;
+                        background: url(https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_icon_checkbox_check.png) no-repeat center center;
+                        background-size: 100%;
+                        border:none;
                     }
                 }
-
-                .check {
-                    display: inline-block;
-                    width: 18px;
-                    height: 18px;
-                    box-sizing: border-box;
-                    border: 1px solid #333;
-                    border-radius: 50%;
-                    position: absolute;
-                    top:0;
-                    bottom: 0;
-                    margin: auto;
-                }
-                .name {
-                    color: #333333;
-                    font-size: 14px;
-                    line-height: 42px;
-                    padding-left: 26px;
-                }
             }
 
-            .xm-cart-item-products {
-                width: 100%;
-                background: #f3f3f3;
+            .check {
+                display: inline-block;
+                width: 18px;
+                height: 18px;
                 box-sizing: border-box;
+                border: 1px solid #333;
+                border-radius: 50%;
+                position: absolute;
+                top:0;
+                bottom: 0;
+                margin: auto;
+            }
+            .name {
+                color: #333333;
+                font-size: 14px;
+                line-height: 42px;
+                padding-left: 26px;
             }
         }
+
+        .xm-cart-item-products {
+            width: 100%;
+            background: #f3f3f3;
+            box-sizing: border-box;
+        }
+    }
 </style>
