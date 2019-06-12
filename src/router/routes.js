@@ -4,6 +4,8 @@ const Sort = () => import('@/views/Sort')
 const Taste = () => import('@/views/Taste')
 const Cart = () => import('@/views/Cart')
 const Mine = () => import('@/views/Mine')
+const XmSearch = () => import('@/components/XmSearch')
+const XmMessage = () => import('@/components/XmMessage')
 
 export default [
   {
@@ -56,5 +58,15 @@ export default [
       title: '我的',
       icon: '&#xe680;'
     }
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: XmSearch
+  },
+  {
+    path: '/message',
+    name: 'message',
+    component: XmMessage
   }
 ]
