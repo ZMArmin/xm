@@ -12,6 +12,7 @@
 <script>
     export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
         props: {
             id: Number,
             price: Number,
@@ -22,6 +23,9 @@
 =======
 
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
     }
 </script>
 

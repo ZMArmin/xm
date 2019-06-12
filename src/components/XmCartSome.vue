@@ -40,18 +40,23 @@
     import XmCartItem from '@/components/XmCartItem'
     import {
 <<<<<<< HEAD
+<<<<<<< HEAD
         mapState,
         mapMutations,
         mapGetters
 =======
         mapState
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+        mapState
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
     } from 'vuex'
     export default {
         components: {
             XmCartItem
         },
         computed: {
+<<<<<<< HEAD
 <<<<<<< HEAD
             ...mapState([
                 'cart',
@@ -70,11 +75,16 @@
                 'toggleIsEdit'
             ])
 =======
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
             ...mapState(['cart'])
         },
         created () {
             console.log(this.cart)
+<<<<<<< HEAD
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         }
     }
 </script>
@@ -83,7 +93,10 @@
     .xm-cart-main {
         width: 100%;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         height: 50px;
         position: fixed;
         top: 0;
@@ -109,7 +122,10 @@
 
     .xm-cart-main {
         width: 100%;
+<<<<<<< HEAD
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         position: relative;
         background: #f3f3f3;
         z-index: -1;
@@ -119,6 +135,7 @@
 
             img {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 width: 100%;
                 height: 100%;
             }
@@ -126,10 +143,13 @@
             .xm-cart-title {
 =======
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
                 width: 100%;
                 height: 100%;
             }
 
+<<<<<<< HEAD
         }
         .xm-cart-title {
             width: 100%;
@@ -143,6 +163,18 @@
 =======
     }
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+        }
+        .xm-cart-title {
+            width: 100%;
+            position: absolute;
+            font-size: 16px;
+            top: 28px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         .xm-cart-edit {
             position: absolute;
             z-index: 1;
@@ -152,9 +184,12 @@
             font-size: 14px;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
         .xm-cart-item {
             width: 100%;
             box-sizing: border-box;

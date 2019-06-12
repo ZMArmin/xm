@@ -5,12 +5,16 @@ import {
     COUNT_INCREMENT,
     TOGGLE_ALL_IS_CHECK,
 <<<<<<< HEAD
+<<<<<<< HEAD
     TOGGLE_IS_EDIT,
     DELE_ITEM,
     ON_ADD_CART
 =======
     TOGGLE_IS_LOGIN
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+    TOGGLE_IS_LOGIN
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
 } from './mutationtypes'
 export default {
     [TOGGLE_IS_CHECK] (state, id) {
@@ -45,6 +49,7 @@ export default {
          })
     },
     [TOGGLE_ALL_IS_CHECK] (state) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         state.allCheck = !state.allCheck
         state.cart = state.cart.map(item => {
@@ -115,6 +120,11 @@ export default {
     [TOGGLE_IS_LOGIN] (state, isLogin) {
         state.isLogin = isLogin
 >>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
+=======
+    },
+    [TOGGLE_IS_LOGIN] (state, isLogin) {
+        state.isLogin = isLogin
+>>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
     }
 
 }
