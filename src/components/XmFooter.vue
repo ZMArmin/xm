@@ -68,7 +68,5 @@ $mainColor: #845f3f;
         padding:3px 5px;
 
     }
-    
-
 }
 </style>

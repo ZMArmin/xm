@@ -13,8 +13,14 @@ export default {
     },
     totalCheckedPrice (state) {
         return state.cart.reduce((total, current) => {
-            total += current.isCheck ? current.count*current.price : 0
+            total += current.isCheck ? current.count * current.price : 0
             return total
         }, 0)
+    },
+    isAllCheck (state) {
+        // eslint-disable-next-line no-return-assign
+        return state.allCheck = state.cart.every(item => {
+            return item.isCheck === true
+        })
     }
 }

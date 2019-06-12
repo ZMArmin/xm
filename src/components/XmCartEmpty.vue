@@ -11,7 +11,7 @@
                 <div class="xm-cart-empty-info-main-title">
                     购物车还没有商品哟……
                 </div>
-                <div class="xm-cart-empty-info-main-button">
+                <div class="xm-cart-empty-info-main-button" @click="goShopping">
                     去逛逛
                 </div>
             </div>
@@ -20,11 +20,14 @@
 </template>
 
 <script>
-export default {
-    
-}
+    export default {
+        methods: {
+            goShopping () {
+                this.$router.push('/home')
+            }
+        }
+    }
 </script>
-   
 
 <style lang="scss">
     .xm-cart-empty {
@@ -87,7 +90,6 @@ export default {
                     font-size: 13px;
                 }
             }
-
-        }  
+        }
     }
 </style>

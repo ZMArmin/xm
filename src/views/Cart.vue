@@ -1,56 +1,104 @@
 <template>
-    <div class="xm-cart">
-        <XmCartSome v-if="totalCount !=0 "></XmCartSome>
-        <XmCartEmpty v-else></XmCartEmpty>
-        <div class="xm-cart-more">
-             <p class="xm-cart-more-title">为您推荐</p>
-             <div class="xm-cart-more-wrap">
-                <XmCartMore></XmCartMore>
-                <XmCartMore></XmCartMore>
-                <XmCartMore></XmCartMore>
-                <XmCartMore></XmCartMore>
-             </div>
-        </div>
-        <div class="xm-cart-total" v-if="totalCount !=0">
-            <label class="xm-cart-total-check">
-                <input type="checkbox">
-                <span class="check"></span>
-                <span class="checkName">全选</span>
-            </label>
-            <p class="xm-cart-total-counter">合计：<span class="money">￥{{totalCheckedPrice}}</span></p>
-            <p class="xm-cart-total-cal">结算(<span class="tatalCount">{{totalCheckedCount}}</span>)</p>
+    <div class="wrap">
+        <!-- <unLoginCart v-if="isLogin === false"></unLoginCart> -->
+        <div class="xm-cart">
+            <XmCartHead :distance="52" container=".xm-cart"></XmCartHead>
+            <XmCartSome v-if="totalCount !=0 "></XmCartSome>
+            <XmCartEmpty v-else></XmCartEmpty>
+            <div class="xm-cart-more">
+                <p class="xm-cart-more-title">为您推荐</p>
+                <div class="xm-cart-more-wrap">
+                    <XmCartMore
+                        v-for="item in list"
+                        :key="item.id"
+                        :id="item.id"
+                        :image="item.image"
+                        :title="item.title"
+                        :price="item.price"
+                        :qunTitle="item.qunTitle"
+                    ></XmCartMore>
+                </div>
+            </div>
+            <div class="xm-cart-total" v-if="totalCount !=0">
+                <label class="xm-cart-total-check">
+                    <input type="checkbox" @change="toggleAllIscheck" :checked="isAllCheck">
+                    <span class="check"></span>
+                    <span class="checkName">全选</span>
+                </label>
+                <p class="xm-cart-total-counter"><i v-if="!isEdit">合计：<span class="money">￥{{totalCheckedPrice}}</span></i></p>
+                <p class="xm-cart-total-cal" v-if="!isEdit">结算<span v-if="totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
+                <p class="xm-cart-total-del" v-else @click="deleItem">删除<span v-if="totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-
     import XmCartMore from '@/components/XmCartMore'
     import XmCartEmpty from '@/components/XmCartEmpty'
     import XmCartSome from '@/components/XmCartSome'
+    import unLoginCart from '@/components/unLoginCart'
+    import XmCartHead from '@/components/XmCartHead'
+    import * as ajax from '@/request'
     import {
         mapGetters,
-        mapState
+        mapState,
+        mapMutations
     } from 'vuex'
     export default {
+        data () {
+            return {
+                list: []
+            }
+        },
         components: {
             XmCartMore,
             XmCartEmpty,
-            XmCartSome
+            XmCartSome,
+            unLoginCart,
+            XmCartHead
+        },
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                vm.getList()
+            })
         },
         computed: {
-            ...mapState(['cart']),
+            ...mapState([
+                'cart',
+                'allCheck',
+                'isEdit',
+                'isLogin'
+            ]),
             ...mapGetters([
-               'totalCount',
-               'totalCheckedCount',
-               'totalCheckedPrice'
-           ]) 
+                'totalCount',
+                'totalCheckedCount',
+                'totalCheckedPrice',
+                'isAllCheck'
+            ])
+        },
+        methods: {
+            ...mapMutations([
+                'toggleAllIscheck',
+                'toggleIsEdit',
+                'deleItem'
+            ]),
+            getList () {
+                ajax.gitCartMore().then(resp => {
+                    // console.log(resp)
+                    this.list = resp.data.list
+                })
+            }
         }
     }
 
 </script>
 
 <style lang="scss">
+    .wrap {
+        height: 100%;
+        width: 100%;
+    }
     .xm-cart {
         width: 100%;
         height: 100%;
@@ -145,9 +193,11 @@
                     }
                 }
 
-                .xm-cart-total-cal {
+                .xm-cart-total-cal,
+                .xm-cart-total-del {
                     width: 96px;
                     height: 38px;
+                    margin-right: 5px;
                     margin-top: 5px;
                     font-size: 15px;
                     background: #e30d0d;
@@ -159,5 +209,4 @@
                 }
             }
     }
-
 </style>

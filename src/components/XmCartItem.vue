@@ -6,9 +6,9 @@
             <span></span>
         </label>
         </div>
-        <div class="xm-cart-item-product-picture">
+        <router-link tag="div" class="xm-cart-item-product-picture" :to="{name: 'detail', query: { id }}">
             <img :src="image" :alt="title">
-        </div>
+        </router-link>
         <div class="xm-cart-item-product-attr">
             <p class="xm-cart-item-product-attr-title">{{title}}</p>
             <div class="xm-cart-item-product-attr-action">
@@ -53,7 +53,6 @@
                 type: Boolean,
                 default: true
             }
-            
         },
         methods: {
             ...mapMutations([
@@ -80,7 +79,6 @@
         &-check {
             height: 74px;
             width: 48px;
-            
             input {
                 display: none;
                 position: relative;
@@ -112,10 +110,9 @@
 
         &-picture {
            width: 86px;
-           height: 86px; 
+           height: 86px;
            margin-left:-20px;
            background: #f3f3f3;
-           
            img {
                width: 100%;
                height: 100%;
@@ -169,9 +166,6 @@
                             font-weight: 800;
                         }
                     }
-
-                    
-                    
                 }
             }
         }

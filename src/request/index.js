@@ -30,3 +30,5 @@ ajax.interceptors.response.use(resp => {
 export const getNav = () => ajax.get('api/tabs')
 
 export const getShopList = (id, start = 0) => ajax.get(`/api/tab/${id}?start=${start}`)
+
+export const gitCartMore = () => ajax.get('/api/sub_column/13/toplist?perpage=50')

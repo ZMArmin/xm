@@ -1,18 +1,24 @@
 <template>
     <div class="xm-cart-mores">
-        <dl class="xm-cart-mores-info">
-            <dt class="xm-cart-mores-info-pic"><img src="https://img.youpin.mi-img.com/800_pic/7dc0f40fb38f901978d34014d389e4c7.png@base@tag=imgScale&F=webp" alt=""></dt>
-            <dd class="xm-cart-mores-info-discribe">最好的选中活动上世纪建成后将实施科技阿斯利康数据时</dd>
-            <dd class="xm-cart-mores-info-title">金士顿基督教是基督教客户简单介绍</dd>
-            <dd class="xm-cart-mores-info-price">￥126</dd>
-        </dl>
+        <router-link tag="dl" :to="{name: 'detail', query: { id }}" class="xm-cart-mores-info">
+            <dt class="xm-cart-mores-info-pic"><img :src="image" alt=""></dt>
+            <dd class="xm-cart-mores-info-discribe">{{qunTitle}}</dd>
+            <dd class="xm-cart-mores-info-title">{{title}}</dd>
+            <dd class="xm-cart-mores-info-price">￥{{price}}</dd>
+        </router-link>
     </div>
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        props: {
+            id: Number,
+            price: Number,
+            image: String,
+            title: String,
+            qunTitle: String
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

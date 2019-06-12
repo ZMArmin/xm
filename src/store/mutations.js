@@ -1,9 +1,11 @@
-import { Toast } from 'mint-ui'
+import { Toast, MessageBox } from 'mint-ui'
 import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
     COUNT_INCREMENT,
-    TOGGLE_ALL_IS_CHECK
+    TOGGLE_ALL_IS_CHECK,
+    TOGGLE_IS_EDIT,
+    DELE_ITEM
 } from './mutationtypes'
 export default {
     [TOGGLE_IS_CHECK] (state, id) {
@@ -11,6 +13,9 @@ export default {
            if (item.id === id) item.isCheck = !item.isCheck
            return item
         })
+        // state.allCheck = state.cart.every(item => {
+        //     return item.isCheck === true
+        // })
     },
     [COUNT_DECREMENT] (state, id) {
         state.cart = state.cart.map(item => {
@@ -34,7 +39,55 @@ export default {
             return item
          })
     },
-    [TOGGLE_ALL_IS_CHECK](state) {
-        
+    [TOGGLE_ALL_IS_CHECK] (state) {
+        state.allCheck = !state.allCheck
+        state.cart = state.cart.map(item => {
+            if (state.allCheck === true) {
+                item.isCheck = true
+                return item
+            } else {
+                item.isCheck = false
+                return item
+            }
+        })
+    },
+    [TOGGLE_IS_EDIT] (state) {
+        state.isEdit = !state.isEdit
+        if (state.isEdit === false) {
+            state.allCheck = true
+            state.cart = state.cart.map(item => {
+                item.isCheck = true
+                return item
+            })
+        } else {
+            state.allCheck = false
+            state.cart = state.cart.map(item => {
+                item.isCheck = false
+                return item
+            })
+          }
+    },
+    [DELE_ITEM] (state, id) {
+        const is = state.cart.some(item => {
+            return item.isCheck
+        })
+        if (is === false) {
+            Toast({
+                message: '请选择需要删除的商品',
+                duration: 1500
+            })
+        } else {
+            MessageBox({
+                title: '提示',
+                message: '确定删除选中的商品吗?',
+                showCancelButton: true
+            })
+            MessageBox.confirm('确定删除选中的商品吗?').then(() => {
+                state.cart = state.cart.filter(item => {
+                    return item.isCheck !== true
+                })
+                console.log(state.cart)
+            })
+        }
     }
 }

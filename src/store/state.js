@@ -16,5 +16,7 @@ export default {
             image: 'https://img.youpin.mi-img.com/800_pic/3d7eab3cbcbed3e4a761aec8a31edce5.png@base@tag=imgScale&F=webp',
             isCheck: true
         }
-    ]
+    ],
+    allCheck: Boolean,
+    isEdit: false
 }
