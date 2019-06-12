@@ -24,7 +24,6 @@
 </template>
 
 <script>
-
     import XmCartMore from '@/components/XmCartMore'
     import XmCartEmpty from '@/components/XmCartEmpty'
     import XmCartSome from '@/components/XmCartSome'
@@ -41,13 +40,12 @@
         computed: {
             ...mapState(['cart']),
             ...mapGetters([
-               'totalCount',
-               'totalCheckedCount',
-               'totalCheckedPrice'
-           ]) 
+                'totalCount',
+                'totalCheckedCount',
+                'totalCheckedPrice'
+            ])
         }
     }
-
 </script>
 
 <style lang="scss">
@@ -81,83 +79,82 @@
             }
         }
 
-            .xm-cart-total {
-                width: 100%;
-                position: absolute;
-                bottom: 53px;
-                height: 48px;
-                background: #fff;
-                display: flex;
-                line-height: 48px;
+        .xm-cart-total {
+            width: 100%;
+            position: absolute;
+            bottom: 53px;
+            height: 48px;
+            background: #fff;
+            display: flex;
+            line-height: 48px;
 
-                &-check {
-                    margin-left: 12px;
+            &-check {
+                margin-left: 12px;
 
-                     input {
-                        display: none;
-                        position: relative;
+                    input {
+                    display: none;
+                    position: relative;
 
-                        &:checked {
-                           + .check {
-                               width: 18px;
-                                height: 18px;
-                                background: url(https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_icon_checkbox_check.png) no-repeat center center;
-                                background-size: 100%;
-                                border:none;
-                            }
+                    &:checked {
+                        + .check {
+                            width: 18px;
+                            height: 18px;
+                            background: url(https://app.xiaomiyoupin.com/youpin/static/m/res/images/std_icon_checkbox_check.png) no-repeat center center;
+                            background-size: 100%;
+                            border:none;
                         }
                     }
-
-                   .check {
-                        display: inline-block;
-                        width: 18px;
-                        height: 18px;
-                        box-sizing: border-box;
-                        border: 1px solid #333;
-                        border-radius: 50%;
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        margin: auto;
-                   }
-
-                  .checkName {
-                      display: inline-block;
-                      font-size: 13px;
-                      line-height: 48px;
-                      margin-left: 25px;
-                  }
                 }
 
-                .xm-cart-total-counter {
-                    flex: 1;
+                .check {
+                    display: inline-block;
+                    width: 18px;
+                    height: 18px;
+                    box-sizing: border-box;
+                    border: 1px solid #333;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                }
+
+                .checkName {
+                    display: inline-block;
                     font-size: 13px;
-                    font-weight: bold;
-                    text-align: right;
-                    color: #000;
-                    line-height: 28px;
-                    margin-right: 12px;
-
-                    .money {
-                        font-weight: normal;
-                        font-size: 16px;
-                        color: #e30d0d;
-                    }
-                }
-
-                .xm-cart-total-cal {
-                    width: 96px;
-                    height: 38px;
-                    margin-top: 5px;
-                    font-size: 15px;
-                    background: #e30d0d;
-                    color: #fff;
-                    line-height: 38px;
-                    text-align: center;
-                    font-weight: 600;
-                    border-radius: 20px;
+                    line-height: 48px;
+                    margin-left: 25px;
                 }
             }
-    }
 
+            .xm-cart-total-counter {
+                flex: 1;
+                font-size: 13px;
+                font-weight: bold;
+                text-align: right;
+                color: #000;
+                line-height: 28px;
+                margin-right: 12px;
+
+                .money {
+                    font-weight: normal;
+                    font-size: 16px;
+                    color: #e30d0d;
+                }
+            }
+
+            .xm-cart-total-cal {
+                width: 96px;
+                height: 38px;
+                margin-top: 5px;
+                font-size: 15px;
+                background: #e30d0d;
+                color: #fff;
+                line-height: 38px;
+                text-align: center;
+                font-weight: 600;
+                border-radius: 20px;
+            }
+        }
+    }
 </style>

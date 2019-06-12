@@ -30,3 +30,13 @@ ajax.interceptors.response.use(resp => {
 export const getNav = () => ajax.get('api/tabs')
 
 export const getShopList = (id, start = 0) => ajax.get(`/api/tab/${id}?start=${start}`)
+
+export const login = (userinfo) => {
+    return ajax.post('http://rap2api.taobao.org/app/mock/206566/login', userinfo)
+}
+
+export const taste = () => {
+    return ajax.get('http://rap2api.taobao.org/app/mock/206566/taste/column')
+}
+
+export const getTasteList = () => ajax.get(`/api/column/4203/items?start=0`)

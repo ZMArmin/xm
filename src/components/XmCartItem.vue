@@ -53,7 +53,6 @@
                 type: Boolean,
                 default: true
             }
-            
         },
         methods: {
             ...mapMutations([
@@ -80,7 +79,6 @@
         &-check {
             height: 74px;
             width: 48px;
-            
             input {
                 display: none;
                 position: relative;
@@ -112,10 +110,9 @@
 
         &-picture {
            width: 86px;
-           height: 86px; 
+           height: 86px;
            margin-left:-20px;
            background: #f3f3f3;
-           
            img {
                width: 100%;
                height: 100%;
@@ -169,9 +166,6 @@
                             font-weight: 800;
                         }
                     }
-
-                    
-                    
                 }
             }
         }

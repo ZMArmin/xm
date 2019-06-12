@@ -13,7 +13,7 @@ export default {
     },
     totalCheckedPrice (state) {
         return state.cart.reduce((total, current) => {
-            total += current.isCheck ? current.count*current.price : 0
+            total += current.isCheck ? current.count * current.price : 0
             return total
         }, 0)
     }

@@ -23,7 +23,8 @@ export default [
     meta: {
       isTabbar: true,
       title: '首页',
-      icon: '&#xe619;'
+      icon: '&#xe619;',
+      isAuthRequired: false
     }
   },
   {
@@ -36,7 +37,8 @@ export default [
     meta: {
       isTabbar: true,
       title: '分类',
-      icon: '&#xe6b7;'
+      icon: '&#xe6b7;',
+      isAuthRequired: false
     },
     children: [
       {
@@ -56,7 +58,8 @@ export default [
     meta: {
       isTabbar: true,
       title: '品味',
-      icon: '&#xe666;'
+      icon: '&#xe666;',
+      isAuthRequired: false
     }
   },
   {
@@ -69,7 +72,8 @@ export default [
     meta: {
       isTabbar: true,
       title: '购物车',
-      icon: '&#xe61d;'
+      icon: '&#xe61d;',
+      isAuthRequired: false
     }
   },
   {
@@ -82,7 +86,8 @@ export default [
     meta: {
       isTabbar: true,
       title: '我的',
-      icon: '&#xe680;'
+      icon: '&#xe680;',
+      isAuthRequired: false
     }
   },
   {
@@ -90,7 +95,8 @@ export default [
     name: 'product',
     component: Product,
     meta: {
-      isTabbar: false
+      isTabbar: false,
+      isAuthRequired: false
     },
     children: [
         {
@@ -105,15 +111,17 @@ export default [
     name: 'detail',
     component: Detail,
     meta: {
-        isTabbar: false
+        isTabbar: false,
+        isAuthRequired: false
     }
   },
     {
       path: '/login',
-      name: '/login',
+      name: 'login',
       component: Login,
       meta: {
-        isTabbar: false
+        isTabbar: false,
+        isAuthRequired: false
       }
     }
 ]

@@ -12,10 +12,9 @@
 </template>
 
 <script>
-    import { Toast } from 'mint-ui'
+    // import { Toast } from 'mint-ui'
     export default {
         created () {
-            Toast('提示信息')
         }
     }
 </script>

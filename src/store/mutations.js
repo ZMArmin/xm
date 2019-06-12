@@ -3,7 +3,8 @@ import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
     COUNT_INCREMENT,
-    TOGGLE_ALL_IS_CHECK
+    TOGGLE_ALL_IS_CHECK,
+    TOGGLE_IS_LOGIN
 } from './mutationtypes'
 export default {
     [TOGGLE_IS_CHECK] (state, id) {
@@ -34,7 +35,10 @@ export default {
             return item
          })
     },
-    [TOGGLE_ALL_IS_CHECK](state) {
-        
+    [TOGGLE_ALL_IS_CHECK] (state) {
+    },
+    [TOGGLE_IS_LOGIN] (state, isLogin) {
+        state.isLogin = isLogin
     }
+
 }

@@ -20,11 +20,9 @@
 </template>
 
 <script>
-export default {
-    
-}
+    export default {
+    }
 </script>
-   
 
 <style lang="scss">
     .xm-cart-empty {
@@ -87,7 +85,6 @@ export default {
                     font-size: 13px;
                 }
             }
-
-        }  
+        }
     }
 </style>
