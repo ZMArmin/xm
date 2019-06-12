@@ -9,6 +9,23 @@ Vue.use(Mint)
 
 Vue.config.productionTip = false
 
+// 全局导航守卫
+router.beforeEach((to, from, next) => {
+// 先判断是否需要，在验证登录状态
+    if (to.meta.isAuthRequired === true) {
+        if (store.state.isLogin === false) {
+            next({
+                name: 'login',
+                params: { 'from': to.path }
+            })
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
+})
+
 new Vue({
   store,
   router,

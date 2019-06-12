@@ -4,9 +4,13 @@ import {
     COUNT_DECREMENT,
     COUNT_INCREMENT,
     TOGGLE_ALL_IS_CHECK,
+<<<<<<< HEAD
     TOGGLE_IS_EDIT,
     DELE_ITEM,
     ON_ADD_CART
+=======
+    TOGGLE_IS_LOGIN
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
 } from './mutationtypes'
 export default {
     [TOGGLE_IS_CHECK] (state, id) {
@@ -41,6 +45,7 @@ export default {
          })
     },
     [TOGGLE_ALL_IS_CHECK] (state) {
+<<<<<<< HEAD
         state.allCheck = !state.allCheck
         state.cart = state.cart.map(item => {
             if (state.allCheck === true) {
@@ -105,5 +110,11 @@ export default {
         } else {
             state.cart.push({ ...shopInfo, count: 1, isCheck: true })
         }
+=======
+    },
+    [TOGGLE_IS_LOGIN] (state, isLogin) {
+        state.isLogin = isLogin
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
     }
+
 }

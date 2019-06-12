@@ -39,15 +39,20 @@
 <script>
     import XmCartItem from '@/components/XmCartItem'
     import {
+<<<<<<< HEAD
         mapState,
         mapMutations,
         mapGetters
+=======
+        mapState
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
     } from 'vuex'
     export default {
         components: {
             XmCartItem
         },
         computed: {
+<<<<<<< HEAD
             ...mapState([
                 'cart',
                 'allCheck',
@@ -64,6 +69,12 @@
                 'toggleAllIscheck',
                 'toggleIsEdit'
             ])
+=======
+            ...mapState(['cart'])
+        },
+        created () {
+            console.log(this.cart)
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
         }
     }
 </script>
@@ -71,6 +82,34 @@
 <style lang="scss">
     .xm-cart-main {
         width: 100%;
+<<<<<<< HEAD
+=======
+        height: 50px;
+        position: fixed;
+        top: 0;
+        line-height: 50px;
+        z-index: 2;
+
+        &-title {
+            width: 100%;
+            color: #333;
+            font-size: 16px;
+            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        &-edit {
+            position: absolute;
+            color: #333;
+            right: 20px;
+            top:0;
+        }
+    }
+
+    .xm-cart-main {
+        width: 100%;
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
         position: relative;
         background: #f3f3f3;
         z-index: -1;
@@ -79,19 +118,31 @@
             height: 105px;
 
             img {
+<<<<<<< HEAD
                 width: 100%;
                 height: 100%;
             }
         }
             .xm-cart-title {
+=======
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
                 width: 100%;
-                position: absolute;
-                font-size: 16px;
-                top: 28px;
-                text-align: center;
-                color: #fff;
+                height: 100%;
             }
+
         }
+        .xm-cart-title {
+            width: 100%;
+            position: absolute;
+            font-size: 16px;
+            top: 28px;
+            text-align: center;
+            color: #fff;
+        }
+<<<<<<< HEAD
+=======
+    }
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
         .xm-cart-edit {
             position: absolute;
             z-index: 1;
@@ -100,7 +151,10 @@
             color: #fff;
             font-size: 14px;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
         .xm-cart-item {
             width: 100%;
             box-sizing: border-box;

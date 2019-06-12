@@ -11,6 +11,7 @@
 
 <script>
     export default {
+<<<<<<< HEAD
         props: {
             id: Number,
             price: Number,
@@ -18,6 +19,9 @@
             title: String,
             qunTitle: String
         }
+=======
+
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
     }
 </script>
 

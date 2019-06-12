@@ -67,7 +67,6 @@ $mainColor: #845f3f;
         text-align: center;
         border-radius: 50%;
         padding:3px 5px;
-
     }
 }
 </style>

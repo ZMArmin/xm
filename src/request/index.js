@@ -31,5 +31,17 @@ export const getNav = () => ajax.get('api/tabs')
 
 export const getShopList = (id, start = 0) => ajax.get(`/api/tab/${id}?start=${start}`)
 
+<<<<<<< HEAD
 export const gitCartMore = () => ajax.get('/api/sub_column/13/toplist?perpage=50')
 export const getDetail = (id) => ajax.get(`api/detail?id=${id}`)
+=======
+export const login = (userinfo) => {
+    return ajax.post('http://rap2api.taobao.org/app/mock/206566/login', userinfo)
+}
+
+export const taste = () => {
+    return ajax.get('http://rap2api.taobao.org/app/mock/206566/taste/column')
+}
+
+export const getTasteList = () => ajax.get(`/api/column/4203/items?start=0`)
+>>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
