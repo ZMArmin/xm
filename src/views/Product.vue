@@ -1,19 +1,21 @@
 <template>
     <div class="xm-product">
         <div class="xm-product-header">
-            <span>&lt;</span>
+            <span @click="onToBack">&lt;</span>
             <h3>有品推荐</h3>
             <i class="icon" v-html="'&#xe61e;'"></i>
         </div>
         <div class="xm-product-main">
-            <ul class="xm-product-main-nav">
-                <router-link
-                    v-for="list in lists"
-                    :key="list.id"
-                    tag="li"
-                    :to="`/product/${list.id}`"
-                >{{list.name}}</router-link>
-            </ul>
+            <div class="xm-product-main-nav">
+                <ul class="xm-product-main-nav-ul">
+                    <router-link
+                        v-for="list in lists"
+                        :key="list.id"
+                        tag="li"
+                        :to="`/product/${list.id}`"
+                    >{{list.name}}</router-link>
+                </ul>
+            </div>
             <div class="xm-product-main-content">
                 <router-view></router-view>
             </div>
@@ -29,19 +31,29 @@
                 lists: []
             }
         },
-        created () {
-            // console.log(this.$route)
+        // created () {
+
+        // },
+        methods: {
+            onToBack () {
+                this.$router.push('/sort')
+            }
+        },
+        beforeRouteEnter (to, from, next) {
+            // console.log({ to, from })
             ajax.getNav().then(resp => {
                 // console.log(resp)
                 let { list } = resp.data
                 // 去掉今日推荐
                 list = list.slice(1)
-                this.lists = list
-                // 第一次进来时默认跳转第0条shop
-                // console.log(list)
-                const { productId = list[0].id } = this.$route.params
-                // console.log(productId)
-                this.$router.push(`/product/${productId}`)
+                next(vm => {
+                    vm.lists = list
+                    // 第一次进来时默认跳转第0条shop
+                    // console.log(list)
+                    const { productId = list[0].id } = vm.$route.params
+                    // console.log(productId)
+                    vm.$router.push(`/product/${productId}`)
+                })
             })
         }
     }
@@ -103,26 +115,29 @@ $mainColor: #845f3f;
         display: flex;
         flex-direction: column;
         &-nav {
-            display: flex;
-            justify-content: space-around;
-            height: 30px;
+            width: 100%;
+            overflow: auto;
             position: fixed;
             top: 50px;
             left: 0;
-            background-color: #fff;
-            // overflow-y: hidden;
-            // border-bottom: 2px solid $grey;
-            li {
-                // overflow-y: hidden;
-                width: 70px;
-                height: 30px;
-                line-height: 30px;
-                text-align: center;
-                color: $deepGrey;
-            }
-            .router-link-exact-active,
-            .router-link-active {
-                border-bottom: 2px solid $mainColor;
+            &-ul {
+                width: 1190px;
+                height: 32px;
+                background-color: #fff;
+                overflow: auto;
+                li {
+                    float: left;
+                    margin: 0 10px;
+                    padding: 0 5px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    color: $deepGrey;
+                }
+                .router-link-exact-active,
+                .router-link-active {
+                    border-bottom: 2px solid $mainColor;
+                }
             }
         }
         &-content {

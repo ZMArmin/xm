@@ -3,7 +3,8 @@ import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
     COUNT_INCREMENT,
-    TOGGLE_ALL_IS_CHECK
+    TOGGLE_ALL_IS_CHECK,
+    ON_ADD_CART
 } from './mutationtypes'
 export default {
     [TOGGLE_IS_CHECK] (state, id) {
@@ -34,7 +35,22 @@ export default {
             return item
          })
     },
-    [TOGGLE_ALL_IS_CHECK](state) {
-        
+    [TOGGLE_ALL_IS_CHECK] (state) {
+
+    },
+    [ON_ADD_CART] (state, shopInfo) {
+        const isExist = state.cart.some(item => {
+            return item.id === shopInfo.id
+        })
+        if (isExist) {
+            state.cart = state.cart.map(item => {
+                if (item.id === shopInfo.id) {
+                    item.count++
+                }
+                return item
+            })
+        } else {
+            state.cart.push({ ...shopInfo, count: 1, isCheck: true })
+        }
     }
 }

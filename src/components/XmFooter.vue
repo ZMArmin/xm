@@ -5,6 +5,7 @@
             v-for="tabbar in tabbars"
             :key="tabbar.name"
             :to="tabbar.path"
+            :event="$route.path.includes(tabbar.path) ? '' : 'click'"
         >
             <i class="icon" v-html="tabbar.meta.icon"></i>
             <span>{{tabbar.meta.title}}</span>
@@ -68,7 +69,5 @@ $mainColor: #845f3f;
         padding:3px 5px;
 
     }
-    
-
 }
 </style>
