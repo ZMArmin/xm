@@ -1,4 +1,6 @@
+import Vue from 'vue'
 import axios from 'axios'
+
 import { Indicator } from 'mint-ui'
 
 const ajax = axios.create()
@@ -31,13 +33,9 @@ export const getNav = () => ajax.get('api/tabs')
 
 export const getShopList = (id, start = 0) => ajax.get(`/api/tab/${id}?start=${start}`)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export const gitCartMore = () => ajax.get('/api/sub_column/13/toplist?perpage=50')
 export const getDetail = (id) => ajax.get(`api/detail?id=${id}`)
-=======
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
+
 export const login = (userinfo) => {
     return ajax.post('http://rap2api.taobao.org/app/mock/206566/login', userinfo)
 }
@@ -47,7 +45,28 @@ export const taste = () => {
 }
 
 export const getTasteList = () => ajax.get(`/api/column/4203/items?start=0`)
-<<<<<<< HEAD
->>>>>>> feat:1.完成taste页面；2.登录页完成全局状态管理和登录跳转
-=======
->>>>>>> e31eb28a5b5a7a46c50e2c673002ab7a08d33672
+
+export const getHome = () => {
+    return ajax.get('http://www.xiongmaoyouxuan.com/api/tab/1?start=0')
+}
+
+export const getRecomend = () => {
+    return ajax.get('http://quan.lukou.com/api/detail?id=13345016&normal=1&sa=')
+}
+
+export const getRecomendThen = () => {
+    return ajax.get('http://quan.lukou.com/api/detail?id=13259734&normal=1&sa=')
+}
+
+export const getMarket = () => {
+    return ajax.get('http://quan.lukou.com/api/detail?id=11559626&normal=1&sa=')
+}
+
+export const getList = () => {
+    return ajax.get('http://quan.lukou.com/api/tab/2?start=0')
+}
+
+export const getTasteList = () => {
+    return ajax.get('http://quan.lukou.com/api/column/4203/items?start=0')
+}
+

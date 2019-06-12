@@ -10,6 +10,8 @@ const Product = () => import('@/views/Product')
 const ProductList = () => import('@/views/ProductList')
 const Detail = () => import('@/views/Detail')
 const Login = () => import('@/views/Login')
+const XmSearch = () => import('@/components/XmSearch')
+const XmMessage = () => import('@/components/XmMessage')
 
 export default [
   {
@@ -124,4 +126,15 @@ export default [
         isAuthRequired: false
       }
     }
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: XmSearch
+  },
+  {
+    path: '/message',
+    name: 'message',
+    component: XmMessage
+  }
 ]
