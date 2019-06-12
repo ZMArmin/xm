@@ -58,7 +58,7 @@
             this.id = to.params.productId
             this.nextIndex = 0
             this.lists = []
-            // this.getList()
+            this.getList()
             next()
         },
         methods: {

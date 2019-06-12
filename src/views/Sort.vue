@@ -54,12 +54,12 @@ $deepGrey: #383838;
 $mainColor: #845f3f;
 @font-face {
     font-family: 'iconfont';  /* project id 1231674 */
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot');
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot');
+    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1231674_ftrcnereula.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1231674_ftrcnereula.svg#iconfont') format('svg');
 }
 .icon {
     font-family: 'iconfont';
