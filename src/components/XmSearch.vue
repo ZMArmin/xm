@@ -39,7 +39,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         .logoImg {
-            width: 64px;
+            width: 28px;
             height: 28px;
             img {
                 width: 20px;
@@ -74,6 +74,7 @@ export default {
         .logoMessage {
             width: 28px;
             height: 28px;
+            margin-right: 10px;
             .liMessage {
                 width: 28px;
                 height: 28px;
