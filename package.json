@@ -16,7 +16,10 @@
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "swiper": "^4.5.0",
+<<<<<<< HEAD
 >>>>>>> 构建首页
+=======
+>>>>>>> e48fee2daffd8cd4aae3b61e883bfae97a3db548
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.1.1"
