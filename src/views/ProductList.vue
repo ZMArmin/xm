@@ -4,7 +4,7 @@
         v-infinite-scroll="onLoadMore"
         infinite-scroll-distance="10"
     >
-        <ProductItem
+        <XmProductItem
             v-for="list in lists"
             :key="list.id"
             :id="list.id"
@@ -12,7 +12,7 @@
             :title="list.title"
             :price="list.price"
             :couponValue="list.couponValue"
-        ></ProductItem>
+        ></XmProductItem>
         <b
             class="xm-productList-loadmore"
             v-if="!isEnd"
@@ -26,7 +26,7 @@
 
 <script>
     import * as ajax from '@/request'
-    import ProductItem from '@/components/ProductItem'
+    import XmProductItem from '@/components/XmProductItem'
     export default {
         data () {
             return {
@@ -36,15 +36,6 @@
                 nextIndex: 0
             }
         },
-        // created () {
-        //     // console.log(this.$route.params)
-        //     this.id = this.$route.params.shopId
-        //     ajax.getShopList(this.id).then(resp => {
-        //         // console.log(resp)
-        //         this.lists = resp.data.items.list
-        //     })
-        // },
-
         // 导航守卫
         beforeRouteEnter (to, from, next) {
             // this.id = to.params.productId
@@ -58,7 +49,7 @@
             this.id = to.params.productId
             this.nextIndex = 0
             this.lists = []
-            this.getList()
+            if (document.querySelector('.xm-app-main').scrollTop === 0) this.getList()
             next()
         },
         methods: {
@@ -76,7 +67,7 @@
             }
         },
         components: {
-            ProductItem
+            XmProductItem
         }
     }
 </script>

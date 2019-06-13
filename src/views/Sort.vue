@@ -3,7 +3,7 @@
         <div class="xm-sort-top">
             <div class="xm-sort-top-search">
                 <i class="icon" v-html="'&#xe61e;'"></i>
-                <input v-model="value" placeholder="粉丝专享日 拼手气抽金条"/>
+                <input v-model="value" @click="onToSearch" placeholder="粉丝专享日 拼手气抽金条"/>
             </div>
         </div>
         <div class="xm-sort-main">
@@ -31,13 +31,18 @@
                 lists: []
             }
         },
+        methods: {
+            onToSearch () {
+                this.$router.push('/search')
+            }
+        },
         created () {
             // console.log(this.$route)
             ajax.getNav().then(resp => {
                 // console.log(resp)
                 let { list } = resp.data
-                // 去掉今日推荐
-                // list = list.slice(1)
+                // 去掉第一条数据
+                list = list.slice(1)
                 this.lists = list
                 // 第一次进来时默认跳转第0条shop
                 // console.log(list)
@@ -54,12 +59,12 @@ $deepGrey: #383838;
 $mainColor: #845f3f;
 @font-face {
     font-family: 'iconfont';  /* project id 1231674 */
-    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot');
-    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.svg#iconfont') format('svg');
 }
 .icon {
     font-family: 'iconfont';
@@ -106,17 +111,26 @@ $mainColor: #845f3f;
             overflow-x: hidden;
             li {
                 height: 50px;
-                line-height: 50px;
-                padding-left: 10px;
+                // line-height: 50px;
                 font-size: 12px;
                 color: $deepGrey;
-                border-left: 2px solid $grey;
+                overflow: hidden;
+                p {
+                    height: 20px;
+                    line-height: 20px;
+                    width: 100%;
+                    padding-left: 10px;
+                    margin-top: 15px;
+                    border-left: 3px solid $grey;
+                }
             }
             .router-link-exact-active,
             .router-link-active {
                 background-color: #ffffff;
-                border-left: 2px solid $mainColor;
-                color:$mainColor;
+                p {
+                    border-left: 3px solid $mainColor;
+                    color:$mainColor;
+                }
             }
         }
         &-right {

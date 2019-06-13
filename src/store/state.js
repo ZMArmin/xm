@@ -1,7 +1,6 @@
 export default {
-    cart: [],
+    cart: JSON.parse(window.localStorage.getItem('xm-cart')) || [],
     isLogin: false,
     isEdit: false,
     allCheck: Boolean
-
 }

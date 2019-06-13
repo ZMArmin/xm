@@ -3,7 +3,7 @@
         <div class="xm-product-header">
             <span @click="onToBack">&lt;</span>
             <h3>有品推荐</h3>
-            <i class="icon" v-html="'&#xe61e;'"></i>
+            <i class="icon" v-html="'&#xe61e;'" @click="onToSearch"></i>
         </div>
         <div class="xm-product-main">
             <div class="xm-product-main-nav">
@@ -28,32 +28,47 @@
     export default {
         data () {
             return {
-                lists: []
+                id: '',
+                lists: [],
+                name: ''
             }
         },
-        // created () {
-
-        // },
         methods: {
+            onToSearch () {
+                this.$router.push('/search')
+            },
             onToBack () {
                 this.$router.push('/sort')
+            },
+            getList () {
+                ajax.getNav().then(resp => {
+                    // console.log(resp)
+                    let { list } = resp.data
+                    // 去掉第一条数据
+                    list = list.slice(1)
+                    this.lists = list
+                    // 第一次进来时默认跳转第0条shop
+                    // console.log(list[0].id,111)
+                    // const { productId = Number(this.$route.params.typeId) } = Number(this.$route.params.typeId)
+                    // this.$router.push(`/product/${productId}`)
+                    const { productId = list[0].id } = this.$route.params
+                    this.$router.push(`/product/${productId}`)
+                })
             }
         },
         beforeRouteEnter (to, from, next) {
             // console.log({ to, from })
-            ajax.getNav().then(resp => {
-                // console.log(resp)
-                let { list } = resp.data
-                // 去掉今日推荐
-                list = list.slice(1)
-                next(vm => {
-                    vm.lists = list
-                    // 第一次进来时默认跳转第0条shop
-                    // console.log(list)
-                    const { productId = list[0].id } = vm.$route.params
-                    // console.log(productId)
-                    vm.$router.push(`/product/${productId}`)
-                })
+            // let id = from.params.shopId
+            next(vm => {
+                vm.getList()
+                // if (from.path.includes('sort')) {
+                //     ajax.getShopList(id).then(resp => {
+                //         // console.log(resp.data.category.name)
+                //         vm.name = resp.data.category.name
+                //     })
+                // } else if (from.path.includes('detail')) {
+                //     vm.name = '有品推荐'
+                // }
             })
         }
     }
@@ -65,12 +80,12 @@ $deepGrey: #383838;
 $mainColor: #845f3f;
 @font-face {
     font-family: 'iconfont';  /* project id 1231674 */
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot');
-    src: url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1231674_uqt7el26mdl.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.svg#iconfont') format('svg');
 }
 .icon {
     font-family: 'iconfont';
