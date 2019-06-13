@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 
 import { Indicator } from 'mint-ui'
@@ -52,6 +51,10 @@ export const getHome = () => {
 
 export const getRecomend = () => {
     return ajax.get('http://quan.lukou.com/api/detail?id=13345016&normal=1&sa=')
+}
+
+export const getNewBot = () => {
+    return ajax.get('http://quan.lukou.com/api/tab/4?start=0')
 }
 
 export const getRecomendThen = () => {
