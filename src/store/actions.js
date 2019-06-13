@@ -1,4 +1,5 @@
 import * as ajax from '@/request'
+import { Toast, MessageBox } from 'mint-ui'
 export default {
     loginAction (ctx, userinfo) {
         ajax.login(userinfo).then(resp => {
@@ -9,5 +10,21 @@ export default {
             window.localStorage.setItem('xm-userinfo', JSON.stringify(resp.data.data.userinfo))
             ctx.commit('toggleIsLogin', resp.data.data.userinfo)
         })
+    },
+    deleItem (context) {
+        const is = context.state.cart.some(item => {
+            return item.isCheck
+        })
+        if (is === false) {
+            Toast({
+                message: '请选择需要删除的商品',
+                duration: 1500
+            })
+        } else {
+            MessageBox.confirm('确定删除选中的商品吗?').then(() => {
+                context.commit('deleProduct')
+                // console.log(state.cart)
+            })
+        }
     }
 }

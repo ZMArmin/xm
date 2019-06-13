@@ -30,5 +30,8 @@ export default {
     user (state) {
         // 用户名
         return { displayName: state.userinfo.displayName, avatar: state.userinfo.avatar }
+    },
+    isCartEmpty (state) {
+        return state.cart.length === 0
     }
 }

@@ -64,7 +64,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-bottom: 120px;
                 justify-content: center;
 
                 &-pic {

@@ -1,11 +1,11 @@
-import { Toast, MessageBox } from 'mint-ui'
+import { Toast } from 'mint-ui'
 import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
     COUNT_INCREMENT,
     TOGGLE_ALL_IS_CHECK,
     TOGGLE_IS_EDIT,
-    DELE_ITEM,
+    DELE_PRODUCT,
     ON_ADD_CART,
     TOGGLE_IS_LOGIN
 } from './mutationtypes'
@@ -16,9 +16,6 @@ export default {
             if (item.id === id) item.isCheck = !item.isCheck
             return item
         })
-        // state.allCheck = state.cart.every(item => {
-        //     return item.isCheck === true
-        // })
     },
     [COUNT_DECREMENT] (state, id) {
         state.cart = state.cart.map(item => {
@@ -70,29 +67,10 @@ export default {
             })
         }
     },
-    [DELE_ITEM] (state, id) {
-        const is = state.cart.some(item => {
-            return item.isCheck
+    [DELE_PRODUCT] (state) {
+        state.cart = state.cart.filter(item => {
+            return item.isCheck !== true
         })
-        if (is === false) {
-            Toast({
-                message: '请选择需要删除的商品',
-                duration: 1500
-            })
-        } else {
-            MessageBox({
-                title: '提示',
-                message: '确定删除选中的商品吗?',
-                showCancelButton: true
-            })
-            MessageBox.confirm('确定删除选中的商品吗?').then(() => {
-                state.cart = state.cart.filter(item => {
-                    return item.isCheck !== true
-                })
-                // console.log(state.cart)
-                window.localStorage.setItem('xm-cart', JSON.stringify(state.cart))
-            })
-        }
     },
     [ON_ADD_CART] (state, shopInfo) {
         const isExist = state.cart.some(item => {

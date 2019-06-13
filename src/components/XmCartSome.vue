@@ -8,6 +8,9 @@
                 购物车
             </div>
         </div>
+        <div class="goBack" @click="goBack">
+                <i class="icon">&#xe63e;</i>
+        </div>
         <div class="xm-cart-edit" @click.stop="toggleIsEdit">
                 <span v-if="!isEdit"> 编辑</span>
                 <span v-else>完成</span>
@@ -61,12 +64,38 @@
             ...mapMutations([
                 'toggleAllIscheck',
                 'toggleIsEdit'
-            ])
+            ]),
+            goBack () {
+                this.$router.back()
+            }
         }
     }
 </script>
 
 <style lang="scss">
+    @font-face {
+        font-family: 'iconfont';  /* project id 1237307 */
+        src: url('//at.alicdn.com/t/font_1237307_xixmr887ds.eot');
+        src: url('//at.alicdn.com/t/font_1237307_xixmr887ds.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_1237307_xixmr887ds.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_1237307_xixmr887ds.woff') format('woff'),
+        url('//at.alicdn.com/t/font_1237307_xixmr887ds.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_1237307_xixmr887ds.svg#iconfont') format('svg');
+    }
+
+    .goBack{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 19px;
+        left: 20px;
+        font-size: 16px;
+        z-index: 2;
+
+        .icon {
+            font-family: 'iconfont';
+        }
+    }
     .xm-cart-main {
         width: 100%;
         position: relative;
@@ -85,7 +114,7 @@
             width: 100%;
             position: absolute;
             font-size: 16px;
-            top: 28px;
+            top: 18px;
             text-align: center;
             color: #fff;
         }
@@ -93,7 +122,7 @@
     .xm-cart-edit {
         position: absolute;
         z-index: 1;
-        top:28px;
+        top: 18px;
         right: 8px;
         color: #fff;
         font-size: 14px;
@@ -102,9 +131,10 @@
         width: 100%;
         box-sizing: border-box;
         display: flex;
-        margin-top:-50px;
+        margin-top:-45px;
         flex-direction: column;
-        .xm-cart-item-title {
+
+        &-title {
             z-index: 1;
             margin:0 10px;
             background: #fff;
