@@ -9,6 +9,21 @@ Vue.use(Mint)
 
 Vue.config.productionTip = false
 
+Vue.mixin({
+    filters: {
+        countShow (val) {
+            if (val > 99) {
+                return '99+'
+            } else {
+                return val
+            }
+        },
+        toFix2 (val) {
+            return val.toFixed(2)
+        }
+    }
+})
+
 // 全局导航守卫
 router.beforeEach((to, from, next) => {
 // 先判断是否需要，在验证登录状态

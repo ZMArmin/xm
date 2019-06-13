@@ -49,11 +49,11 @@
 <style lang="scss">
     .xm-cart-head {
         width: 100%;
-        height: 8%;
+        height: 50px;
         position: fixed;
         top: 0;
         opacity: 0;
-        line-height: 45px;
+        line-height: 50px;
         z-index: 2;
         transition:opacity 0.7s;
 
@@ -64,6 +64,7 @@
             text-align: center;
             background: #fff;
             border-bottom: 1px solid #bfbfc0;
+
         }
 
         &-edit {

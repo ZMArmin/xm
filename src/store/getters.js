@@ -22,5 +22,8 @@ export default {
         return state.allCheck = state.cart.every(item => {
             return item.isCheck === true
         })
+    },
+    isCartEmpty (state) {
+        return state.cart.length === 0
     }
 }

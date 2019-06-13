@@ -1,10 +1,10 @@
 <template>
     <div class="wrap">
-        <!-- <unLoginCart v-if="isLogin === false"></unLoginCart> -->
-        <div class="xm-cart">
-            <XmCartHead :distance="52" container=".xm-cart"></XmCartHead>
-            <XmCartSome v-if="totalCount !=0 "></XmCartSome>
-            <XmCartEmpty v-else></XmCartEmpty>
+        <XmUnLoginCart v-if="!isLogin"></XmUnLoginCart>
+        <div class="xm-cart" v-else>
+            <XmCartHead :distance="20" container=".xm-cart" v-show="!isCartEmpty"></XmCartHead>
+            <XmCartEmpty v-if="isCartEmpty"></XmCartEmpty>
+            <XmCartSome v-else></XmCartSome>
             <div class="xm-cart-more">
                 <p class="xm-cart-more-title">为您推荐</p>
                 <div class="xm-cart-more-wrap">
@@ -25,9 +25,9 @@
                     <span class="check"></span>
                     <span class="checkName">全选</span>
                 </label>
-                <p class="xm-cart-total-counter"><i v-if="!isEdit">合计：<span class="money">￥{{totalCheckedPrice}}</span></i></p>
-                <p class="xm-cart-total-cal" v-if="!isEdit">结算<span v-if="totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
-                <p class="xm-cart-total-del" v-else @click="deleItem">删除<span v-if="totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
+                <p class="xm-cart-total-counter"><i v-if="!isEdit">合计：<span class="money">￥{{totalCheckedPrice | toFix2}}</span></i></p>
+                <p class="xm-cart-total-cal" v-if="!isEdit">结算<span v-if="!isCartEmpty && totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
+                <p class="xm-cart-total-del" v-else @click="deleItem">删除<span v-if="!isCartEmpty && totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
             </div>
         </div>
     </div>
@@ -37,13 +37,14 @@
     import XmCartMore from '@/components/XmCartMore'
     import XmCartEmpty from '@/components/XmCartEmpty'
     import XmCartSome from '@/components/XmCartSome'
-    import unLoginCart from '@/components/unLoginCart'
+    import XmUnLoginCart from '@/components/XmunLoginCart'
     import XmCartHead from '@/components/XmCartHead'
     import * as ajax from '@/request'
     import {
         mapGetters,
         mapState,
-        mapMutations
+        mapMutations,
+        mapActions
     } from 'vuex'
     export default {
         data () {
@@ -55,7 +56,7 @@
             XmCartMore,
             XmCartEmpty,
             XmCartSome,
-            unLoginCart,
+            XmUnLoginCart,
             XmCartHead
         },
         beforeRouteEnter (to, from, next) {
@@ -67,21 +68,24 @@
             ...mapState([
                 'cart',
                 'allCheck',
-                'isEdit',
-                'isLogin'
+                'isEdit'
             ]),
             ...mapGetters([
                 'totalCount',
                 'totalCheckedCount',
                 'totalCheckedPrice',
-                'isAllCheck'
+                'isAllCheck',
+                'isCartEmpty',
+                'isLogin'
             ])
         },
         methods: {
+            ...mapActions([
+                'deleItem'
+            ]),
             ...mapMutations([
                 'toggleAllIscheck',
-                'toggleIsEdit',
-                'deleItem'
+                'toggleIsEdit'
             ]),
             getList () {
                 ajax.gitCartMore().then(resp => {
@@ -127,7 +131,6 @@
                 justify-content: space-around;
             }
         }
-
         .xm-cart-total {
             width: 100%;
             position: absolute;
@@ -154,7 +157,6 @@
                         }
                     }
                 }
-
                 .check {
                     display: inline-block;
                     width: 18px;
@@ -175,9 +177,8 @@
                     margin-left: 25px;
                 }
             }
-
-                .xm-cart-total-cal,
-                .xm-cart-total-del {
+            .xm-cart-total-cal,
+            .xm-cart-total-del {
                     width: 96px;
                     height: 38px;
                     margin-right: 5px;
@@ -190,50 +191,33 @@
                     font-weight: 600;
                     border-radius: 20px;
                 }
-            }
-            .xm-cart-total-counter {
-                flex: 1;
-                font-size: 13px;
-                font-weight: bold;
-                text-align: right;
-                color: #000;
-                line-height: 28px;
-                margin-right: 12px;
+        }
+        .xm-cart-total-counter {
+            flex: 1;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: right;
+            color: #000;
+            line-height: 48px;
+            margin-right: 12px;
 
-                .money {
-                    font-weight: normal;
-                    font-size: 16px;
-                    color: #e30d0d;
-                }
+            .money {
+                font-weight: normal;
+                font-size: 16px;
+                color: #e30d0d;
             }
-            .xm-cart-total-counter {
-                flex: 1;
-                font-size: 13px;
-                font-weight: bold;
-                text-align: right;
-                color: #000;
-                line-height: 28px;
-                margin-right: 12px;
-
-                .money {
-                    font-weight: normal;
-                    font-size: 16px;
-                    color: #e30d0d;
-                }
-            }
-
-            .xm-cart-total-cal {
-                width: 96px;
-                height: 38px;
-                margin-top: 5px;
-                font-size: 15px;
-                background: #e30d0d;
-                color: #fff;
-                line-height: 38px;
-                text-align: center;
-                font-weight: 600;
-                border-radius: 20px;
-            }
-        
+        }
+        .xm-cart-total-cal {
+            width: 96px;
+            height: 38px;
+            margin-top: 5px;
+            font-size: 15px;
+            background: #e30d0d;
+            color: #fff;
+            line-height: 38px;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 20px;
+        }
     }
 </style>
