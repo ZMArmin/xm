@@ -14,7 +14,7 @@
                 </router-link>
             </ul>
         </div>
-        <div class="nav">  
+        <div class="nav">
             <ul class="navUl">
                 <li class="navLi">推荐</li>
                 <li class="navLi">手机</li>
@@ -45,11 +45,11 @@
             <ul class="bottom">
                 <li
                     class="bottomLi"
-                    v-for="grids in gridsV2"
-                    :key="grids.text"
+                    v-for="hotCommodity in hotCommodities"
+                    :key="hotCommodity.text"
                 >
-                    <img :src="grids.imageUrl" alt="" class="bottomLiImg">
-                    <span>{{grids.text}}</span>
+                    <img :src="hotCommodity.image" alt="" class="bottomLiImg">
+                    <span class="bottomSpan">{{hotCommodity.title}}</span>
                 </li>
             </ul>
         </div>
@@ -73,12 +73,12 @@
             <div class="crowdFinding-messageMore">
                 <div class="messageMoreLeft">
                     <p class="moreLeftTitle">{{detailMore.title}}</p>
-                    <p class="moreLeftPrice">{{detailMore.price}}</p>
+                    <p class="moreLeftPrice">￥{{detailMore.price}}</p>
                     <img :src="detailMore.image" alt="" class="moreLeftImg">
                 </div>
                 <div class="messageMoreRight">
                     <p class="moreRightTitle">{{detailMore.title}}</p>
-                    <p class="moreRightPrice">{{detailMore.price}}</p>
+                    <p class="moreRightPrice">￥{{detailMore.price}}</p>
                     <img :src="detailMore.image" alt="" class="moreRightImg">
                 </div>
             </div>
@@ -164,42 +164,52 @@
         data () {
             return {
                 banners: [],
-                gridsV2: [],
                 topList: [],
                 detail: [],
                 detailMore: [],
                 market: [],
                 navLinks: [],
-                categories: []
+                categories: [],
+                hotCommodities: []
             }
         },
         created () {
+            // console.log('created')
             ajax.getHome().then(resp => {
                 this.banners = resp.data.banners
                 this.$nextTick().then(() => {
                     this.initSwiper()
                 })
-                this.gridsV2 = resp.data.gridsV2
                 this.topList = resp.data.topList
                 this.navLinks = resp.data.navLinks
-            }),
+            })
+
+            ajax.getNewBot().then(resp => {
+                this.hotCommodities = resp.data.hotCommodities
+            })
+
             ajax.getRecomend().then(resp => {
                 this.detail = resp.data.detail
-            }),
+            })
+
             ajax.getRecomendThen().then(resp => {
                 this.detailMore = resp.data.detail
-                console.log(this.detailMore)
-            }),
+            })
+
             ajax.getMarket().then(resp => {
                 this.market = resp.data.detail
-            }),
+            })
+
             ajax.getList().then(resp => {
                 this.categories = resp.data.categories
             })
         },
+        // destroyed () {
+        //     console.log('destroyed')
+        // },
         methods: {
             initSwiper () {
-                var mySwiper = new Swiper('.swiper-container', {
+                const mySwiper = new Swiper('.swiper-container', {
                     autoplay: true,
                     loop: true,
                     pagination: {
@@ -217,7 +227,7 @@
 <style lang="scss">
 .header {
     width: 100%;
-    height: 30px;
+    height: 50px;
     position: fixed;
     top: 0;
     left: 0;
@@ -225,13 +235,14 @@
     background-color: #fff;
     .logoUl {
         width: 100%;
-        height: 30px;
+        height: 50px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         .logoImg {
             width: 64px;
             height: 28px;
+            margin-top: 5px;
             img {
                 width: 58px;
                 height: 28px;
@@ -240,6 +251,8 @@
         .logoLi {
             width: 258px;
             height: 28px;
+            margin-top: 5px;
+            margin-left: -12px;
             background-color: #ece8e8;
             position: relative;
             img {
@@ -263,6 +276,7 @@
         .logoMessage {
             width: 28px;
             height: 28px;
+            margin-top: 5px;
             img {
                 width: 28px;
                 height: 28px;
@@ -273,12 +287,12 @@
 .nav {
     width: 100%;
     height: 30px;
-    padding-top: 30px;
+    padding-top: 50px;
     overflow: auto;
     .navUl {
         height: 100%;
         overflow: auto;
-        width: 600px;
+        width: 800px;
         .navLi {
             width: 60px;
             height: 30px;
@@ -301,7 +315,6 @@
 
     img {
         width: 100%;
-        
     }
 }
 .slideBottom {
@@ -309,13 +322,13 @@
     height: 100px;
     .bottom {
         width: 100%;
-        height: 60px;
+        height: 100px;
         display: flex;
         justify-content: space-around;
         align-items: center;
         .bottomLi {
             width: 72px;
-            height: 40px;
+            height: 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -324,15 +337,25 @@
                 height: 50px;
                 margin-bottom: 5px;
             }
+            .bottomSpan {
+                height: 20px;
+                width: 100%;
+                line-height: 20px;
+                overflow: hidden;
+                font-size: 14px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
         }
     }
 }
 .bottomImg {
     width: 100%;
-    height: 100px;
+    height: 90px;
+    margin-top: 10px;
     img {
         width: 100%;
-        height: 100px;
+        height: 90px;
     }
 }
 .crowdFinding {
@@ -356,7 +379,6 @@
     .crowdFinding-message {
         width: 100%;
         height: 170px;
-        background-color: #cea397;
         margin-top: 10px;
         .messageLeft {
             width: 55%;
@@ -374,12 +396,15 @@
             }
             span {
                 height: 22px;
+                width: 100%;
                 line-height: 22px;
                 font-size: 14px;
                 position: absolute;
                 top: 68px;
                 left: 10px;
                 overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 color: #cecece;
             }
             i {
@@ -429,8 +454,8 @@
                 padding-left: 10px;
             }
             .moreLeftImg {
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
                 position: absolute;
                 right: 0px;
                 bottom: 0px;
@@ -459,14 +484,13 @@
                 padding-left: 10px;
             }
             .moreRightImg {
-                width: 100px;
-                height: 100px;
+                width: 90px;
+                height: 90px;
                 position: absolute;
                 right: 0px;
                 bottom: 0px;
             }
         }
-        
     }
 }
 .recomendImg {
@@ -479,7 +503,7 @@
 }
 .dayUpdate {
     width: 100%;
-    margin-top: 150px;
+    margin-top: 165px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -528,7 +552,7 @@
         height: 150px;
         display: flex;
         justify-content: center;
-        background-color: #ffcec0;
+        background-color: #f6dfdf;
         .marketTopLi {
             width: 50%;
             height: 150px;
@@ -568,7 +592,7 @@
         .marketBotLi {
             width: 25%;
             height: 150px;
-            background-color: #c2bbbb;
+            background-color: #d4c8c8;
             text-align: center;
             .botLiTitle {
                 font-size: 16px;
@@ -595,7 +619,7 @@
 }
 .tasteLife{
     width: 100%;
-    height: 230px;
+    height: 250px;
     .tasteText {
         width: 100%;
         height: 30px;
@@ -613,10 +637,10 @@
     }
     .tasteMain {
         width: 100%;
-        height: 200px;
+        height: 250px;
         .tasteImg {
             width: 100%;
-            height: 150px;
+            height: 170px;
         }
         .tasteTitle {
             width: 100%;
@@ -635,13 +659,13 @@
 }
 .newList {
     width: 100%;
-    height: 370px;
+    height: 340px;
     .newImg {
         width: 100%;
-        height: 200px;
+        height: 160px;
         .newImgImg {
             width: 100%;
-            height: 200px;
+            height: 160px;
         }
     }
     .listUl {

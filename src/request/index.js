@@ -53,6 +53,10 @@ export const getRecomend = () => {
     return ajax.get('http://quan.lukou.com/api/detail?id=13345016&normal=1&sa=')
 }
 
+export const getNewBot = () => {
+    return ajax.get('http://quan.lukou.com/api/tab/4?start=0')
+}
+
 export const getRecomendThen = () => {
     return ajax.get('http://quan.lukou.com/api/detail?id=13259734&normal=1&sa=')
 }
