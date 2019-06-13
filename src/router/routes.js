@@ -5,7 +5,7 @@ const Sort = () => import('@/views/Sort')
 const Taste = () => import('@/views/Taste')
 const Cart = () => import('@/views/Cart')
 const Mine = () => import('@/views/Mine')
-const ShopList = () => import('@/views/ShopList')
+const SortList = () => import('@/views/SortList')
 const Product = () => import('@/views/Product')
 const ProductList = () => import('@/views/ProductList')
 const Detail = () => import('@/views/Detail')
@@ -46,7 +46,7 @@ export default [
       {
         path: ':shopId',
         name: 'shoplist',
-        component: ShopList
+        component: SortList
       }
     ]
   },

@@ -1,6 +1,5 @@
 export default {
-    cart: [],
-    // isLogin: false,
+    cart: JSON.parse(window.localStorage.getItem('xm-cart')) || [],
     isEdit: false,
     allCheck: Boolean,
     userinfo: JSON.parse(window.localStorage.getItem('xm-userinfo')) || {
@@ -9,5 +8,4 @@ export default {
         avater: '',
         token: ''
     }
-
 }

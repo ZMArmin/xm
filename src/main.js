@@ -5,6 +5,14 @@ import 'mint-ui/lib/style.css'
 import router from './router/index'
 
 import store from '@/store'
+
+store.subscribe((mutation, state) => {
+    // 订阅所有的mutation，相当于监听变化
+    // console.log(123)
+    // 存localStorage
+    window.localStorage.setItem('xm-cart', JSON.stringify(state.cart))
+})
+
 Vue.use(Mint)
 
 Vue.config.productionTip = false

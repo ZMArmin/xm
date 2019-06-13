@@ -89,7 +89,8 @@ export default {
                 state.cart = state.cart.filter(item => {
                     return item.isCheck !== true
                 })
-                console.log(state.cart)
+                // console.log(state.cart)
+                window.localStorage.setItem('xm-cart', JSON.stringify(state.cart))
             })
         }
     },

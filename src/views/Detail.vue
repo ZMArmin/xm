@@ -42,7 +42,7 @@
                 <span>有品质，放心买！</span>
             </p>
             <p class="xm-detail-main-gift">
-                <i class="icon" v-html="'&#xe619;'"></i>
+                <i class="icon" v-html="'&#xe602;'"></i>
                 <span>新人领180元礼包</span>
                 <b>&gt;</b>
             </p>
@@ -58,14 +58,30 @@
             </p>
             <p class="xm-detail-main-service">
                 <i class="xm-detail-main-service-first">服务</i>
-                <i class="icon" v-html="'&#xe604;'"></i>
+                <i class="icon" v-html="'&#xe62a;'"></i>
                 <span>满99包邮</span>
-                <i class="icon" v-html="'&#xe604;'"></i>
+                <i class="icon" v-html="'&#xe62a;'"></i>
                 <span>有品三方</span>
-                <i class="icon" v-html="'&#xe604;'"></i>
+                <i class="icon" v-html="'&#xe62a;'"></i>
                 <span>7天无理由</span>
                 <b>&gt;</b>
             </p>
+            <div class="xm-detail-main-recommend">
+                <p>--为您推荐--</p>
+                <ul class="xm-detail-main-recommend-shop">
+                    <!-- <li @click="taggleDetail"> -->
+                    <XmCartMore
+                        v-for="item in list"
+                        :key="item.id"
+                        :id="item.id"
+                        :image="item.image"
+                        :title="item.title"
+                        :price="item.price"
+                        :qunTitle="item.qunTitle"
+                    ></XmCartMore>
+                    <!-- </li> -->
+                </ul>
+            </div>
         </div>
         <div class="xm-detail-footer">
             <ul class="xm-detail-footer-left">
@@ -80,7 +96,7 @@
                 <router-link to="/cart" tag="li">
                     <i class="icon" v-html="'&#xe64c;'"></i>
                     <span>购物车</span>
-                    <b class="countTabbar">{{totalCount}}</b>
+                    <b class="countTabbar">{{totalCount | countShow}}</b>
                 </router-link>
             </ul>
             <div class="xm-detail-footer-right">
@@ -92,6 +108,7 @@
 </template>
 
 <script>
+    import XmCartMore from '@/components/XmCartMore'
     import * as ajax from '@/request'
     import {
         mapMutations,
@@ -101,40 +118,55 @@
         data () {
             return {
                 id: '',
-                detail: []
+                detail: [],
+                list: []
             }
         },
         created () {
             this.id = this.$route.query.id
             ajax.getDetail(this.id).then(resp => {
                 this.detail = resp.data.detail
-                console.log(this.detail)
+                // console.log(this.detail)
+            })
+            ajax.gitCartMore().then(resp => {
+                // console.log(resp)
+                this.list = resp.data.list
             })
         },
         methods: {
             onToBack () {
                 this.$router.back()
             },
+            // taggleDetail () {
+            //     this.id = this.$route.query.id
+            //     ajax.getDetail(this.id).then(resp => {
+            //         this.detail = resp.data.detail
+            //         // console.log(this.detail)
+            //     })
+            // },
             ...mapMutations(['onAddCart'])
         },
         computed: {
             ...mapGetters(['totalCount'])
+        },
+        components: {
+            XmCartMore
         }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $grey: #eee;
 $deepGrey: #383838;
 $mainColor: #845f3f;
 @font-face {
     font-family: 'iconfont';  /* project id 1231674 */
-    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot');
-    src: url('//at.alicdn.com/t/font_1231674_ftrcnereula.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1231674_ftrcnereula.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot');
+    src: url('//at.alicdn.com/t/font_1231674_u1oehblncof.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1231674_u1oehblncof.svg#iconfont') format('svg');
 }
 .icon {
     font-family: 'iconfont';
@@ -388,6 +420,26 @@ $mainColor: #845f3f;
                 font-size: 20px;
                 margin-right: 10px;
                 color: #b0b0b0;
+            }
+        }
+        &-recommend {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #fff;
+            p {
+                height: 50px;
+                line-height: 50px;
+                width: 100%;
+                text-align: center;
+                font-size: 16px;
+                color:$deepGrey;
+                letter-spacing: 2px;
+            }
+            &-shop {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
             }
         }
     }
