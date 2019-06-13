@@ -23,6 +23,7 @@ export default {
             return item.isCheck === true
         })
     },
+<<<<<<< HEAD
     isLogin (state) {
         // 从state的userinfo 中取token，token存在，说明登陆过，可以取到用户名
         return Boolean(state.userinfo.token)
@@ -31,6 +32,8 @@ export default {
         // 用户名
         return { displayName: state.userinfo.displayName, avatar: state.userinfo.avatar }
     },
+=======
+>>>>>>> b93d073460f00733f2db402d6ff9ed9da0da5360
     isCartEmpty (state) {
         return state.cart.length === 0
     }
