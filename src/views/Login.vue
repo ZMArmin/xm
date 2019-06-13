@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import { mapActions, mapState } from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
     export default {
         data () {
             return {
@@ -33,7 +33,7 @@
             }
         },
         computed: {
-            ...mapState(['isLogin'])
+            ...mapGetters(['isLogin'])
         },
         methods: {
             ...mapActions(['loginAction']),
@@ -44,7 +44,7 @@
 
                 this.loginAction({ username, password })
                 // 请求的是自己输入的用户名密码，返回的是rap2模拟的用户信息
-                // 登录成功后，全局的isLogin 就为 true
+                // 登录成功后，全局的isLogin 就为 true, 将用户信息存在 localstorage
             },
             toback () {
                 this.$router.back()
@@ -57,16 +57,18 @@
                     // islogin 为true
                     // from 是隐式传参，也就是从别的需要登录验证的页面跳转过来的，
                     // 但是如果是本来就要去登陆，那么就没有这个隐式传参，此时就回首页
-                    const { from = '/' } = this.$route.params
-                    this.$router.push(from)
-                    console.log(from)
+                    this.$router.back()
+                    // 返回首页
+                    // const { from = '/' } = this.$route.params
+                    // this.$router.push(from)
+                    // console.log(from)
                 }
             }
         }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $textColor: #666;
 @font-face {
     font-family: 'iconfont';  /* project id 1237307 */
@@ -154,13 +156,14 @@ $textColor: #666;
         }
 
         &-footer {
-            margin: 0 6%;
+            margin: 0 2%;
             position: absolute;
             bottom: 5%;
 
              p {
                 font-size: 12px;
                 color: #9b9b9b;
+                transform: scale(0.9);
              }
         }
     }

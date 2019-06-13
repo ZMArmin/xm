@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
 // 先判断是否需要，在验证登录状态
     if (to.meta.isAuthRequired === true) {
-        if (store.state.isLogin === false) {
+        if (store.getters.isLogin === false) {
             next({
                 name: 'login',
                 params: { 'from': to.path }

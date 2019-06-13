@@ -1,7 +1,13 @@
 export default {
     cart: [],
-    isLogin: false,
+    // isLogin: false,
     isEdit: false,
-    allCheck: Boolean
+    allCheck: Boolean,
+    userinfo: JSON.parse(window.localStorage.getItem('xm-userinfo')) || {
+        id: '',
+        displayName: '',
+        avater: '',
+        token: ''
+    }
 
 }

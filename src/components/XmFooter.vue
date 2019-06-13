@@ -40,6 +40,16 @@ $mainColor: #845f3f;
     justify-content: space-around;
     text-align: center;
 
+    .router-link-exact-active,
+    .router-link-active {
+        i {
+            color: #e0b877;
+        }
+        span {
+            color: #b38d52;
+        }
+    }
+
     li {
         position: relative;
     }

@@ -4,14 +4,21 @@
             <!-- <img src="../../public/img/cart_top_bg_image.png" alt="bg"> -->
             <div class="xm-mine-header-icon">
                 <i class="icon">&#xe618;</i>
-                <i class="icon">&#xe61e;</i>
+                <i class="icon">&#xe616;</i>
             </div>
-            <div class="xm-mine-header-person">
-                <div class="xm-mine-header-person-head" @click="tologin"></div>
-                <span>未登录</span>
+            <!-- 已登录，跳转个人信息 -->
+            <router-link class="xm-mine-header-person" tag="div" to="/" v-show="isLogin">
+                <div class="xm-mine-header-person-head"><img :src="user.avatar" alt=""></div>
+                <span v-show="isLogin" v-text="user.displayName"></span>
                 <!-- <a href="javascript">去设置密码</a> -->
                 <i class="icon person-icon">&#xe604;</i>
-            </div>
+            </router-link>
+            <!-- 未登录，跳转登录页 -->
+            <router-link class="xm-mine-header-person" tag="div" to="/login" v-show="!isLogin">
+                <div class="xm-mine-header-person-head"><img :src="user.avatar" alt=""></div>
+                <span v-show="!isLogin">未登录</span>
+                <i class="icon person-icon">&#xe604;</i>
+            </router-link>
         </div>
         <div class="xm-mine-order">
             <div class="xm-mine-order-title">
@@ -91,28 +98,27 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
-        methods: {
-            tologin () {
-                this.$router.push('/login')
-            }
+        computed: {
+            ...mapGetters(['isLogin', 'user'])
         }
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $backColor: #fff;
 $headerColor: #ce973d;
 $textColor:#333;
 $mainColor: #845f3f;
 @font-face {
   font-family: 'iconfont';  /* project id 1234334 */
-  src: url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.eot');
-  src: url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1234334_3l4phvsb4zu.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1234334_ad6l27di25j.eot');
+  src: url('//at.alicdn.com/t/font_1234334_ad6l27di25j.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1234334_ad6l27di25j.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1234334_ad6l27di25j.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1234334_ad6l27di25j.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1234334_ad6l27di25j.svg#iconfont') format('svg');
 }
     .icon {
         font-family: 'iconfont';
@@ -150,14 +156,19 @@ $mainColor: #845f3f;
                 height: 70%;
                 padding: 0 12px;
                 display: flex;
+                width: 94%;
 
                 &-head {
-                    width: 50px;
                     height: 50px;
-                    border-radius: 50%;
-                    background: url('../../public/img/icon_default_head_portrait.png') no-repeat center;
-                    background-size: 520%;
-                    background-color: rgba(255, 255, 255, 0.5);
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: url('../../public/img/icon_default_head_portrait.png') no-repeat center;
+                        background-size: 520%;
+                        background-color: rgba(255, 255, 255, 0.5);
+                        border: none;
+                    }
                 }
 
                 span {
@@ -165,6 +176,7 @@ $mainColor: #845f3f;
                     display: inline-block;
                     font-size: 16px;
                     color: #fff;
+                    height: 25px;
                     padding: 16px 12px;
                 }
 

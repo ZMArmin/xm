@@ -11,7 +11,7 @@ import {
 } from './mutationtypes'
 
 export default {
-    [TOGGLE_IS_CHECK](state, id) {
+    [TOGGLE_IS_CHECK] (state, id) {
         state.cart = state.cart.map(item => {
             if (item.id === id) item.isCheck = !item.isCheck
             return item
@@ -20,7 +20,7 @@ export default {
         //     return item.isCheck === true
         // })
     },
-    [COUNT_DECREMENT](state, id) {
+    [COUNT_DECREMENT] (state, id) {
         state.cart = state.cart.map(item => {
             if (item.id === id) {
                 item.count--
@@ -36,13 +36,13 @@ export default {
             return item
         })
     },
-    [COUNT_INCREMENT](state, id) {
+    [COUNT_INCREMENT] (state, id) {
         state.cart = state.cart.map(item => {
             if (item.id === id) item.count++
             return item
         })
     },
-    [TOGGLE_ALL_IS_CHECK](state) {
+    [TOGGLE_ALL_IS_CHECK] (state) {
         state.allCheck = !state.allCheck
         state.cart = state.cart.map(item => {
             if (state.allCheck === true) {
@@ -54,7 +54,7 @@ export default {
             }
         })
     },
-    [TOGGLE_IS_EDIT](state) {
+    [TOGGLE_IS_EDIT] (state) {
         state.isEdit = !state.isEdit
         if (state.isEdit === false) {
             state.allCheck = true
@@ -70,7 +70,7 @@ export default {
             })
         }
     },
-    [DELE_ITEM](state, id) {
+    [DELE_ITEM] (state, id) {
         const is = state.cart.some(item => {
             return item.isCheck
         })
@@ -93,7 +93,7 @@ export default {
             })
         }
     },
-    [ON_ADD_CART](state, shopInfo) {
+    [ON_ADD_CART] (state, shopInfo) {
         const isExist = state.cart.some(item => {
             return item.id === shopInfo.id
         })
@@ -107,10 +107,8 @@ export default {
         } else {
             state.cart.push({ ...shopInfo, count: 1, isCheck: true })
         }
-
     },
-    [TOGGLE_IS_LOGIN](state, isLogin) {
-        state.isLogin = isLogin
-
+    [TOGGLE_IS_LOGIN] (state, userinfo) {
+        state.userinfo = userinfo
     }
 }

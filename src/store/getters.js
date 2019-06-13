@@ -22,5 +22,13 @@ export default {
         return state.allCheck = state.cart.every(item => {
             return item.isCheck === true
         })
+    },
+    isLogin (state) {
+        // 从state的userinfo 中取token，token存在，说明登陆过，可以取到用户名
+        return Boolean(state.userinfo.token)
+    },
+    user (state) {
+        // 用户名
+        return { displayName: state.userinfo.displayName, avatar: state.userinfo.avatar }
     }
 }

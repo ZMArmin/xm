@@ -98,7 +98,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $mainColor: #845f3f;
   .xm-taste {
         height: 100%;
@@ -284,7 +284,6 @@ $mainColor: #845f3f;
             height: 100%;
             width: 100%;
             margin-top: 10px;
-            background: #fff;
 
              &-title {
                 height: 6%;
@@ -308,16 +307,16 @@ $mainColor: #845f3f;
             }
 
             &-block {
-                margin: 0 9px;
                 height: 45%;
-                width: 96%;
-                margin-bottom: 30px;
+                width: 100%;
+                padding-bottom: 30px;
+                background: #fff;
 
                 img {
-                    width: 100%;
+                    width: 96%;
                     height: 68%;
-                    background-color: #333;
                     border-radius: 5px;
+                    margin: 0 9px;
                 }
 
                 &-text {
