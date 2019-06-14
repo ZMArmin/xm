@@ -90,6 +90,7 @@ export default {
     },
     [TOGGLE_IS_LOGIN] (state, userinfo) {
         state.userinfo = userinfo
+<<<<<<< HEAD
     },
     [LOGIN_OUT] (state) {
         if (confirm('确认退出登录吗')) {
@@ -101,5 +102,7 @@ export default {
                 token: ''
             }
         }
+=======
+>>>>>>> 1、refactor：新建结算页；2、feat:购物车的点击事件
     }
 }

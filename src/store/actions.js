@@ -18,7 +18,7 @@ export default {
         if (is === false) {
             Toast({
                 message: '请选择需要删除的商品',
-                duration: 1500
+                duration: 2000
             })
         } else {
             MessageBox.confirm('确定删除选中的商品吗?').then(() => {

@@ -13,6 +13,7 @@ const Login = () => import('@/views/Login')
 const XmSearch = () => import('@/components/XmSearch')
 const XmMessage = () => import('@/components/XmMessage')
 const Personal = () => import('@/views/Personal')
+const XmAccount = () => import('@/views/account')
 
 export default [
   {
@@ -127,27 +128,35 @@ export default [
         isAuthRequired: false
       }
     },
-  {
-    path: '/search',
-    name: 'search',
-    component: XmSearch,
-    meta: {
+    {
+        path: '/search',
+        name: 'search',
+        component: XmSearch,
+        meta: {
+        }
+    },
+    {
+        path: '/message',
+        name: 'message',
+        component: XmMessage,
+        meta: {
+        }
+    },
+    {
+        path: '/personal',
+        name: 'personal',
+        component: Personal,
+        meta: {
+            isTabbar: false,
+            isAuthRequired: false
+        }
+    },
+    {
+        path: '/account',
+        name: '结算',
+        component: XmAccount,
+        meta: {
+            isTabbar: false
+        }
     }
-  },
-  {
-    path: '/message',
-    name: 'message',
-    component: XmMessage,
-    meta: {
-    }
-  },
-  {
-    path: '/personal',
-    name: 'personal',
-    component: Personal,
-    meta: {
-      isTabbar: false,
-      isAuthRequired: false
-    }
-  }
 ]

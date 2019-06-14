@@ -127,7 +127,7 @@
             margin-left: 8px;
 
             &-title {
-                margin-top: 2px;
+                margin-top: 8px;
                 font-size: 14px;
                 line-height: 20px;
                 margin-bottom: 6px;

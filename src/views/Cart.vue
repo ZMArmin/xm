@@ -26,7 +26,7 @@
                     <span class="checkName">全选</span>
                 </label>
                 <p class="xm-cart-total-counter"><i v-if="!isEdit">合计：<span class="money">￥{{totalCheckedPrice | toFix2}}</span></i></p>
-                <p class="xm-cart-total-cal" v-if="!isEdit">结算<span v-if="!isCartEmpty && totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
+                <router-link tag="p" class="xm-cart-total-cal" v-if="!isEdit" to="/account">结算<span v-if="!isCartEmpty && totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></router-link>
                 <p class="xm-cart-total-del" v-else @click="deleItem">删除<span v-if="!isCartEmpty && totalCheckedCount !=0" class="tatalCount">({{totalCheckedCount}})</span></p>
             </div>
         </div>
