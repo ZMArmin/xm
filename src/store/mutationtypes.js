@@ -15,3 +15,5 @@ export const ON_ADD_CART = 'onAddCart'
 export const TOGGLE_IS_LOGIN = 'toggleIsLogin'
 
 export const SURE_DELE = 'sureDele'
+
+export const LOGIN_OUT = 'loginOut'

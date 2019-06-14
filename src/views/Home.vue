@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrap">
         <div class="header">
             <ul class="logoUl">
                 <li  class="logoImg">
@@ -29,17 +29,19 @@
             </ul>
             <div class="navRight"></div>
         </div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div
-                    class="swiper-slide"
-                    v-for="banner in banners"
-                    :key="banner.id"
-                >
-                    <img :src="banner.imageUrl" :alt="banner.title">
+        <div class="banner-wrap">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div
+                        class="swiper-slide"
+                        v-for="banner in banners"
+                        :key="banner.id"
+                    >
+                        <img :src="banner.imageUrl" :alt="banner.title">
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
         <div class="slideBottom">
             <ul class="bottom">
@@ -58,7 +60,7 @@
         </div>
         <div class="crowdFinding">
             <div class="crowdFinding-text">
-                <p class="textP">小米众筹<span>更多</span></p>
+                <p class="textP">小米众筹<router-link to="/product" tag="span" class="span">更多</router-link></p>
             </div>
             <div class="crowdFinding-message">
                 <div class="messageLeft">
@@ -106,10 +108,14 @@
                     <p class="topLiTitle">{{market.expireMsg}}</p>
                     <p class="topLiMess">{{market.title}}</p>
                     <img :src="market.image" alt="" class="imgLeft">
-                    <img :src="market.image" alt="" class="imgRight">
                 </li>
-                <li class="marketTopLi"></li>
+                <li class="marketTopLi">
+                    <p class="topLiTitle">{{market.expireMsg}}</p>
+                    <p class="topLiMess">{{market.title}}</p>
+                    <img :src="market.image" alt="" class="imgLeft">
+                </li>
             </ul>
+            <div class="box"></div>
             <ul class="marketBot">
                 <li
                     class="marketBotLi"
@@ -122,7 +128,7 @@
                 </li>
             </ul>
         </div>
-        <div class="tasteLife">
+        <!-- <div class="tasteLife">
             <div class="tasteText">
                 <p class="tasteP">有品市场<span>更多</span></p>
             </div>
@@ -131,11 +137,11 @@
                 <p class="tasteTitle">今日省钱攻略</p>
                 <p class="tasteMessage">米家变频空调直降500，今日小件组合超值组合省200</p>
             </div>
-        </div>
+        </div> -->
         <div class="newList">
-            <div class="newImg">
+            <!-- <div class="newImg">
                 <img src="../../public/img/tastebanner1.png" alt="" class="newImgImg">
-            </div>
+            </div> -->
             <div class="listUl">
                 <div class="newListUl">
                     <li
@@ -151,7 +157,7 @@
             </div>
         </div>
         <div class="loveMore">
-            <p class="loveMoreTitle">——更多好物，敬请期待——</p>
+            <p class="loveMoreTitle">··· 更多好物，敬请期待 ···</p>
         </div>
     </div>
 </template>
@@ -225,6 +231,9 @@
 </script>
 
 <style lang="scss">
+.wrap {
+    background-color: #eee;
+}
 .header {
     width: 100%;
     height: 50px;
@@ -242,18 +251,17 @@
         .logoImg {
             width: 64px;
             height: 28px;
-            margin-top: 5px;
             img {
                 width: 58px;
                 height: 28px;
             }
         }
         .logoLi {
-            width: 258px;
+            width: 74%;
             height: 28px;
-            margin-top: 5px;
-            margin-left: -12px;
-            background-color: #ece8e8;
+            margin-left: -24px;
+            background-color: #eee;
+            opacity: .6;
             position: relative;
             img {
                 width: 16px;
@@ -261,25 +269,27 @@
                 float: left;
                 position: absolute;
                 top: 6px;
-                left: 0px;
+                left: 6px;
             }
             input {
                 width: 228px;
                 height: 16px;
                 position: absolute;
                 top: 6px;
-                left: 22px;
+                left: 28px;
                 border: none;
-                background-color: #ece8e8;
+                background: none;
+                font-size: 12px;
+                outline: none;
             }
         }
         .logoMessage {
             width: 28px;
             height: 28px;
-            margin-top: 5px;
             img {
-                width: 28px;
-                height: 28px;
+                width: 22px;
+                height: 22px;
+                margin: 4px -5px;
             }
         }
     }
@@ -287,26 +297,35 @@
 .nav {
     width: 100%;
     height: 30px;
-    padding-top: 50px;
+    padding-top: 45px;
     overflow: auto;
+    padding-bottom: 2px;
+    background-color: #fff;
     .navUl {
         height: 100%;
         overflow: auto;
-        width: 800px;
+        width: 160%;
+        padding-left: 6px;
         .navLi {
-            width: 60px;
             height: 30px;
-            margin: 0 10px;
             float: left;
             line-height: 30px;
-            font-size: 14px;
+            font-size: 12px;
+            padding: 0 8px;
+            flex-wrap: nowrap;
+            color: #333;
+            // transform: scale(0.9);
         }
     }
+}
+.banner-wrap {
+    background-color: #fff;
 }
 .swiper-container {
     height: 0;
     padding-top: (400 / 1080) * 100%;
-    width: 100%;
+    width: 96%;
+    border-radius: 5px;
     .swiper-wrapper {
         position: absolute;
         top: 0;
@@ -318,8 +337,10 @@
     }
 }
 .slideBottom {
-    width: 100%;
+    width: 96%;
     height: 100px;
+    padding: 0 9px;
+    background-color: #fff;
     .bottom {
         width: 100%;
         height: 100px;
@@ -327,14 +348,14 @@
         justify-content: space-around;
         align-items: center;
         .bottomLi {
-            width: 72px;
-            height: 80px;
+            width: 20%;
+            height: 90%;
             display: flex;
             flex-direction: column;
             align-items: center;
             .bottomLiImg {
-                width: 50px;
-                height: 50px;
+                width: 88%;
+                height: 72%;
                 margin-bottom: 5px;
             }
             .bottomSpan {
@@ -342,52 +363,64 @@
                 width: 100%;
                 line-height: 20px;
                 overflow: hidden;
-                font-size: 14px;
+                font-size: 12px;
+                color:#666;
                 white-space: nowrap;
                 text-overflow: ellipsis;
+                padding-left: 6px;
             }
         }
     }
 }
 .bottomImg {
     width: 100%;
-    height: 90px;
-    margin-top: 10px;
+    height: 80px;
+    background-color: #fff;
+    margin: 8px 0;
     img {
         width: 100%;
-        height: 90px;
+        height: 90%;
     }
 }
 .crowdFinding {
-    width: 100%;
-    height: 200px;
+    width: 96%;
+    height: 3100%;
+    padding: 0 9px;
+    background-color: #fff;
+
     .crowdFinding-text {
         width: 100%;
         height: 30px;
+        margin-top: 5px;
         .textP {
             height: 30px;
             line-height: 30px;
-            font-size: 20px;
-            margin-left: 10px;
-            span {
+            font-size: 16px;
+            margin-left: 5px;
+            color: #333;
+            padding: 6px 0;
+            .span {
                 float: right;
-                font-size: 14px;
-                margin-right: 10px;
+                font-size: 12px;
+                margin-right: 5px;
+                transform: scale(0.9);
+                color: #999;
             }
         }
     }
     .crowdFinding-message {
-        width: 100%;
-        height: 170px;
+        width: 99%;
+        height: 160px;
         margin-top: 10px;
+        background-color: #faf2f2;
         .messageLeft {
             width: 55%;
-            height: 170px;
+            height: 160px;
             float: left;
             position: relative;
             .messageSm {
                 height: 44px;
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 22px;
                 position: absolute;
                 top: 20px;
@@ -398,21 +431,21 @@
                 height: 22px;
                 width: 100%;
                 line-height: 22px;
-                font-size: 14px;
+                font-size: 12px;
                 position: absolute;
                 top: 68px;
                 left: 10px;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                color: #cecece;
+                color: #999;
             }
             i {
                 position: absolute;
                 top: 100px;
                 left: 10px;
                 color: #e90d4f;
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 22px;
             }
         }
@@ -421,9 +454,9 @@
             height: 170px;
             float:right;
             img {
-                width: 100px;
-                height: 100px;
-                margin-top: 30px;
+                width: 110px;
+                height: 110px;
+                margin-top: 25px;
                 margin-left: 30px;
             }
         }
@@ -431,61 +464,67 @@
     .crowdFinding-messageMore {
         width: 100%;
         height: 150px;
+        padding: 10px 0;
         .messageMoreLeft {
-            width: 50%;
+            width: 48%;
             height: 150px;
             float: left;
             position: relative;
+            background-color: #fafafa;
             .moreLeftTitle {
                 height: 44px;
                 display: block;
                 padding-top: 10px;
                 padding-left: 10px;
                 line-height: 22px;
-                font-size: 16px;
+                font-size: 14px;
+                color: #333;
                 overflow: hidden;
             }
             .moreLeftPrice {
                 display: block;
                 line-height: 22px;
-                font-size: 16px;
+                font-size: 12px;
                 color: #f31a1a;
                 padding-top: 10px;
                 padding-left: 10px;
             }
             .moreLeftImg {
-                width: 90px;
-                height: 90px;
+                width: 95px;
+                height: 92px;
                 position: absolute;
                 right: 0px;
                 bottom: 0px;
             }
         }
         .messageMoreRight {
-            width: 50%;
+            width: 48%;
             height: 150px;
             position: relative;
             float: right;
+            background-color: #fafafa;
+            margin-right: 3px;
             .moreRightTitle {
                 height: 44px;
                 display: block;
                 padding-top: 10px;
                 padding-left: 10px;
                 line-height: 22px;
-                font-size: 16px;
+                font-size: 14px;
+                color: #333;
                 overflow: hidden;
             }
             .moreRightPrice {
                 display: block;
                 line-height: 22px;
-                font-size: 16px;
+                font-size: 12px;
                 color: #f31a1a;
                 padding-top: 10px;
                 padding-left: 10px;
             }
             .moreRightImg {
-                width: 90px;
-                height: 90px;
+                width: 95px;
+                height: 92px;
                 position: absolute;
                 right: 0px;
                 bottom: 0px;
@@ -494,36 +533,41 @@
     }
 }
 .recomendImg {
-    width: 100%;
-    height: 100px;
+     width: 100%;
+    height: 80px;
+    background-color: #fff;
+    margin: 8px 0;
     img {
         width: 100%;
-        height: 100px;
+        height: 90%;
     }
 }
 .dayUpdate {
     width: 100%;
-    margin-top: 165px;
+    margin-top: 8px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    background-color: #fff;
     li {
-        width: 33%;
+        width: 28%;
         height: 150px;
+        margin: 10px 9px;
+        padding-left: 1px;
         img {
             width: 100%;
-            height: 100px;
+            height: 110px;
         }
         .updateTitle {
             height: 22px;
-            font-size: 16px;
+            font-size: 12px;
             line-height: 22px;
             text-overflow: ellipsis;
             overflow: hidden;
         }
         .updatePrice {
             height: 22px;
-            font-size: 16px;
+            font-size: 13px;
             line-height: 22px;
             color: #f00e0e;
         }
@@ -531,51 +575,61 @@
 }
 .market {
     width: 100%;
-    height: 330px;
+    height: 100%;
+    background-color: #fff;
+    margin-top: 8px;
     .marketText {
-        width: 100%;
+        width: 96%;
         height: 30px;
+        margin: 0 9px;
         .textP {
             height: 30px;
             line-height: 30px;
-            font-size: 20px;
-            margin-left: 10px;
+            font-size: 16px;
+            margin-left: 5px;
+            color: #333;
+            padding: 6px 0;
             span {
                 float: right;
-                font-size: 14px;
-                margin-right: 10px;
+                font-size: 12px;
+                margin-right: 5px;
+                transform: scale(0.9);
+                color: #999;
             }
         }
     }
     .marketTop {
-        width: 100%;
-        height: 150px;
+        width: 96%;
+        height: 200px;
+        margin: 0 9px;
         display: flex;
         justify-content: center;
-        background-color: #f6dfdf;
         .marketTopLi {
-            width: 50%;
-            height: 150px;
+            width: 45%;
+            height: 185px;
+            background-color: #efefef;
+            border-radius: 5px;
+            margin: 0 12px;
             .topLiTitle {
-                font-size: 16px;
+                font-size: 12px;
                 line-height: 22px;
                 height: 22px;
                 color: #e75e03;
-                margin-top: 10px;
-                margin-left: 10px;
+                margin: 5px 10px;
             }
             .topLiMess {
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 18px;
                 height: 18px;
-                margin-top: 10px;
-                margin-left: 10px;
+                margin: 5px 10px;
                 overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
             .imgLeft {
-                width: 50%;
-                height: 50%;
-                margin-top: 10px;
+                width: 84%;
+                height: 63%;
+                margin: 5px 10px;
             }
             .imgRight {
                 width: 50%;
@@ -584,35 +638,38 @@
             }
         }
     }
+    .box {
+        height: 8px;
+        width: 1005;
+        background-color: #eee;
+        margin: 5px 0;
+    }
     .marketBot {
         width: 100%;
-        height: 150px;
+        height: 135px;
         display: flex;
         justify-content: center;
         .marketBotLi {
             width: 25%;
-            height: 150px;
-            background-color: #d4c8c8;
+            height: 135px;
             text-align: center;
             .botLiTitle {
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 22px;
                 height: 22px;
                 color: #e75e03;
-                margin-top: 10px;
-                margin-left: 10px;
+                margin: 5px 5px;
             }
             .botLiMess {
-                font-size: 14px;
+                font-size: 12px;
                 line-height: 18px;
                 height: 18px;
-                margin-top: 10px;
-                margin-left: 10px;
+                margin: 5px 5px;
             }
             .botLiImg {
-                width: 50%;
+                width: 68%;
                 height: 50%;
-                margin-top: 10px;
+                margin-top: 4px;
             }
         }
     }
@@ -659,7 +716,9 @@
 }
 .newList {
     width: 100%;
-    height: 340px;
+    height: 165px;
+    background-color: #fff;
+    margin-top: 8px;
     .newImg {
         width: 100%;
         height: 160px;
@@ -678,6 +737,7 @@
             height: 170px;
             list-style: none;
             .newListLi {
+                text-align: center;
                 width: 100px;
                 height: 100%;
                 float: left;
@@ -687,17 +747,16 @@
                     height: 100px;
                 }
                 .listLiTitle {
-                    font-size: 16px;
+                    font-size: 14px;
                     line-height: 22px;
                     height: 22px;
                     margin-top: 5px;
                 }
                 .listLiPrice {
-                    font-size: 14px;
+                    font-size: 12px;
                     line-height: 18px;
                     height: 18px;
                     color: #e90d4f;
-                    margin-top: 5px;
                 }
             }
         }
@@ -705,17 +764,13 @@
 }
 .loveMore {
     width: 100%;
-    height: 150px;
-    background-color: #c2bbbb;
-    text-align: canter;
-    overflow: hidden;
+    background-color: #efefef;
     .loveMoreTitle {
-        width: 50%;
-        margin: 0 auto;
-        font-size: 14px;
-        line-height: 22px;
-        height: 22px;
-        margin-top: 60px;
+        font-size: 12px;
+        line-height: 30px;
+        height: 30px;
+        color: #666;
+        padding: 5px 32%;
     }
 }
 </style>

@@ -7,7 +7,7 @@
                 <i class="icon">&#xe616;</i>
             </div>
             <!-- 已登录，跳转个人信息 -->
-            <router-link class="xm-mine-header-person" tag="div" to="/" v-show="isLogin">
+            <router-link class="xm-mine-header-person" tag="div" to="/personal" v-show="isLogin">
                 <div class="xm-mine-header-person-head"><img :src="user.avatar" alt=""></div>
                 <span v-show="isLogin" v-text="user.displayName"></span>
                 <!-- <a href="javascript">去设置密码</a> -->

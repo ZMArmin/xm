@@ -1,4 +1,4 @@
-import { Toast } from 'mint-ui'
+import { Toast, MessageBox } from 'mint-ui'
 import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
@@ -7,7 +7,8 @@ import {
     TOGGLE_IS_EDIT,
     DELE_PRODUCT,
     ON_ADD_CART,
-    TOGGLE_IS_LOGIN
+    TOGGLE_IS_LOGIN,
+    LOGIN_OUT
 } from './mutationtypes'
 
 export default {
@@ -87,12 +88,18 @@ export default {
             state.cart.push({ ...shopInfo, count: 1, isCheck: true })
         }
     },
-<<<<<<< HEAD
     [TOGGLE_IS_LOGIN] (state, userinfo) {
         state.userinfo = userinfo
-=======
-    [TOGGLE_IS_LOGIN] (state, isLogin) {
-        state.isLogin = isLogin
->>>>>>> b93d073460f00733f2db402d6ff9ed9da0da5360
+    },
+    [LOGIN_OUT] (state) {
+        if (confirm('确认退出登录吗')) {
+            window.localStorage.clear()
+            state.userinfo = {
+                id: '',
+                displayName: '',
+                avater: '',
+                token: ''
+            }
+        }
     }
 }

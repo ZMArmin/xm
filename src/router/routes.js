@@ -12,6 +12,7 @@ const Detail = () => import('@/views/Detail')
 const Login = () => import('@/views/Login')
 const XmSearch = () => import('@/components/XmSearch')
 const XmMessage = () => import('@/components/XmMessage')
+const Personal = () => import('@/views/Personal')
 
 export default [
   {
@@ -138,6 +139,15 @@ export default [
     name: 'message',
     component: XmMessage,
     meta: {
+    }
+  },
+  {
+    path: '/personal',
+    name: 'personal',
+    component: Personal,
+    meta: {
+      isTabbar: false,
+      isAuthRequired: false
     }
   }
 ]

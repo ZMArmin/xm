@@ -83,10 +83,9 @@
             }
         }
         .logoLi {
-            width: 258px;
-            height: 8%;
-            margin-top: 25px;
+            margin-top: 53px;
             text-align: center;
+            background: none;
             .logoLiTitle {
                 font-size: 16px;
                 height: 28px;

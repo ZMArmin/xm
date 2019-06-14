@@ -100,7 +100,7 @@
 
 <style lang="scss" scoped>
 $mainColor: #845f3f;
-  .xm-taste {
+    .xm-taste {
         height: 100%;
         width: 100%;
         background-color: #f4f4f4;
@@ -237,11 +237,10 @@ $mainColor: #845f3f;
                 width: 96%;
                 height: 49%;
                 margin: 6px 9px;
-                overflow: auto;
+                overflow-y: hidden;
 
                 ul {
                     height: 100%;
-                    overflow: auto;
                     display: flex;
 
                     li {

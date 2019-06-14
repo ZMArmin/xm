@@ -7,7 +7,7 @@
                 </li>
                 <li class="logoLi">
                     <img src="../../public/img/search.png" alt="">
-                    <input type="text" placeholder="欢迎浏览有品网" @click="toSearch">
+                    <input type="text" placeholder="欢迎浏览有品网">
                 </li>
                 <router-link tag="li" to="/message" class="logoMessage">
                     <p class="liMessage">搜索</p>

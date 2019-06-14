@@ -105,6 +105,7 @@ $mainColor: #845f3f;
     &-main {
         flex: 1;
         display: flex;
+        overflow-y: hidden;
         &-sidebar {
             width: 80px;
             background-color:$grey;
