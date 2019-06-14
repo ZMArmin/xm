@@ -12,6 +12,7 @@ const Detail = () => import('@/views/Detail')
 const Login = () => import('@/views/Login')
 const XmSearch = () => import('@/components/XmSearch')
 const XmMessage = () => import('@/components/XmMessage')
+const XmAccount = () => import('@/views/account')
 
 export default [
   {
@@ -138,6 +139,14 @@ export default [
     name: 'message',
     component: XmMessage,
     meta: {
+    }
+  },
+  {
+    path: '/account',
+    name: '结算',
+    component: XmAccount,
+    meta: {
+        isTabbar: false
     }
   }
 ]
