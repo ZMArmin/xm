@@ -1,4 +1,4 @@
-import { Toast, MessageBox } from 'mint-ui'
+import { Toast } from 'mint-ui'
 import {
     TOGGLE_IS_CHECK,
     COUNT_DECREMENT,
@@ -90,7 +90,6 @@ export default {
     },
     [TOGGLE_IS_LOGIN] (state, userinfo) {
         state.userinfo = userinfo
-<<<<<<< HEAD
     },
     [LOGIN_OUT] (state) {
         if (confirm('确认退出登录吗')) {
@@ -102,7 +101,5 @@ export default {
                 token: ''
             }
         }
-=======
->>>>>>> 1、refactor：新建结算页；2、feat:购物车的点击事件
     }
 }
