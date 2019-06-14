@@ -12,7 +12,10 @@ const Detail = () => import('@/views/Detail')
 const Login = () => import('@/views/Login')
 const XmSearch = () => import('@/components/XmSearch')
 const XmMessage = () => import('@/components/XmMessage')
+<<<<<<< HEAD
 const Personal = () => import('@/views/Personal')
+=======
+>>>>>>> 0757098d1f25bcf74d54e95184e1402e7df0c913
 const XmAccount = () => import('@/views/account')
 
 export default [
@@ -159,4 +162,5 @@ export default [
             isTabbar: false
         }
     }
+  }
 ]
