@@ -92,14 +92,12 @@ export default {
         state.userinfo = userinfo
     },
     [LOGIN_OUT] (state) {
-        if (confirm('确认退出登录吗')) {
-            window.localStorage.clear()
-            state.userinfo = {
-                id: '',
-                displayName: '',
-                avater: '',
-                token: ''
-            }
+        window.localStorage.clear()
+        state.userinfo = {
+            id: '',
+            displayName: '',
+            avater: '',
+            token: ''
         }
     }
 }

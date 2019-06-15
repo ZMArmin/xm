@@ -167,6 +167,7 @@
     import swiperCss from 'swiper/dist/css/swiper.min.css'
     import * as ajax from '@/request'
     export default {
+        name: 'home',
         data () {
             return {
                 banners: [],
@@ -384,7 +385,6 @@
 }
 .crowdFinding {
     width: 96%;
-    height: 3100%;
     padding: 0 9px;
     background-color: #fff;
 
@@ -575,7 +575,6 @@
 }
 .market {
     width: 100%;
-    height: 100%;
     background-color: #fff;
     margin-top: 8px;
     .marketText {
@@ -770,7 +769,7 @@
         line-height: 30px;
         height: 30px;
         color: #666;
-        padding: 5px 32%;
+        padding: 5px 30%;
     }
 }
 </style>

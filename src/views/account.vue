@@ -164,13 +164,13 @@
                 &-info {
                     padding: 10px 20px;
                     color:#e30d0d;
-                    line-height: 36px;
+                    line-height: 16px;
                     font-size: 12px;
                     background: #fff;
                     box-sizing: border-box;
 
                     i {
-                        padding-left: 140px;
+                        float: right;
                         font-size: 16px;
                     }
                 }
@@ -186,7 +186,7 @@
                 }
             }
             .mint-radiolist {
-                margin-top: 10px;
+                margin-top: 5px;
                 .mint-radio-label {
                     font-size: 13px;
                     color: #333;

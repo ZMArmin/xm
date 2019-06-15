@@ -100,7 +100,7 @@
         width: 100%;
         position: relative;
         background: #f3f3f3;
-        z-index: -1;
+        z-index: 1;
 
         .xm-cart-back {
             height: 105px;
