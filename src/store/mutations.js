@@ -87,12 +87,7 @@ export default {
             state.cart.push({ ...shopInfo, count: 1, isCheck: true })
         }
     },
-<<<<<<< HEAD
     [TOGGLE_IS_LOGIN] (state, userinfo) {
         state.userinfo = userinfo
-=======
-    [TOGGLE_IS_LOGIN] (state, isLogin) {
-        state.isLogin = isLogin
->>>>>>> b93d073460f00733f2db402d6ff9ed9da0da5360
     }
 }

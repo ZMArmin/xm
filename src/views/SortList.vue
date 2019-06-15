@@ -1,7 +1,7 @@
 <template>
     <div class="xm-shopList">
         <div>
-            <a href="javascript:;" class="xm-shopList-banner">
+            <a class="xm-shopList-banner">
                 <img src="https://img.youpin.mi-img.com/miio_album_pics/4baf5aeccf55feb0325db15070984e29.jpg@base@tag=imgScale&F=webp" alt="">
             </a>
         </div>
