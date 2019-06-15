@@ -90,9 +90,6 @@ export default {
     },
     [TOGGLE_IS_LOGIN] (state, userinfo) {
         state.userinfo = userinfo
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     },
     [LOGIN_OUT] (state) {
         if (confirm('确认退出登录吗')) {
@@ -104,11 +101,5 @@ export default {
                 token: ''
             }
         }
-=======
->>>>>>> 0757098d1f25bcf74d54e95184e1402e7df0c913
-=======
->>>>>>> feat:完善详情页部分效果，处理详情页一些bug
-=======
->>>>>>> bdd229bbb6ef7b2e554ed381e0a87c230e3e6051
     }
 }

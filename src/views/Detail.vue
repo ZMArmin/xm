@@ -116,7 +116,9 @@
                         </div>
                         <div class="addCart">
                             <p class="addCart-cart" @click="onAddToCart({...detail})">加入购物车</p>
-                            <p class="addCart-buy">立即购买</p>
+                            <router-link tag="div" to="/account" class="addCart-buy">
+                                <p @click="onAddToCart({...detail})">立即购买</p>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -209,7 +211,9 @@
             </ul>
             <div class="xm-detail-footer-right">
                 <p class="xm-detail-footer-right-cart" @click="onAddCart({...detail})">加入购物车</p>
-                <router-link tag="p" to="/account" class="xm-detail-footer-right-buy">立即购买</router-link>
+                <router-link tag="div" to="/account" class="xm-detail-footer-right-buy">
+                    <p @click="onAddCart({...detail})">立即购买</p>
+                </router-link>
             </div>
         </div>
     </div>
@@ -274,7 +278,7 @@
             this.id = this.$route.query.id
             ajax.getDetail(this.id).then(resp => {
                 this.detail = resp.data.detail
-                this.image = resp.data.detail.photos[1].url
+                this.image = resp.data.detail.photos[0].url
             })
             ajax.gitCartMore().then(resp => {
                 // console.log(resp)
