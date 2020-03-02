@@ -35,7 +35,7 @@
             onToSearch () {
                 this.$router.push('/search')
             }
-        },
+        }, 
         created () {
             // console.log(this.$route)
             ajax.getNav().then(resp => {
@@ -45,7 +45,7 @@
                 list = list.slice(1)
                 this.lists = list
                 // 第一次进来时默认跳转第0条shop
-                // console.log(list)
+                console.log(list)
                 const { shopId = list[0].id } = this.$route.params
                 this.$router.push(`/sort/${shopId}`)
             })

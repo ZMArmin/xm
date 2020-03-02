@@ -46,7 +46,7 @@ export default [
     },
     children: [
       {
-        path: ':shopId',
+        path: '/news/newsList/:shopId',
         name: 'shoplist',
         component: SortList
       }
